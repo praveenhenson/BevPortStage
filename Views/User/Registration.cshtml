@@ -1,0 +1,266 @@
+﻿@model BevPort.Models.UserDetails
+@{
+    ViewData["Title"] = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:wght@100;300;400;500;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bev Port - Registration</title>
+    <link rel='stylesheet' href='css/bootstrap.min.css' media='all' />
+    <link rel='stylesheet' href='css/style.css' media='all' />
+</head>
+<body>
+    <div class="site-wrapper">
+        <div class="main-wrapper">
+            <!--Header Top Menu-->
+            <div class="main-naivgation">
+            </div>
+            <!--End Header Top Menu-->
+            <!--Registration Form-->
+            <section class="registration-page">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="inner">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="image-holder">
+                                            <img src="~/images/registration-form-6.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="reg-forms">
+                                            <h2 class="main-heading-content">Sign Up</h2>
+                                            <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
+                                            <form id="FormID" action="" onsubmit="return myfun()" name="Form" method="post" required>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label asp-for="BUSINESSNAME">Business Name</label>
+                                                            <span class="red-star">*</span>
+                                                            <input asp-for="BUSINESSNAME" type="text" class="form-control" placeholder="" name="BUSINESSNAME" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label asp-for="EIN">Employer Identification Number</label>
+                                                            <span class="red-star">*</span>
+                                                            <input asp-for="EIN" type="text" class="form-control" placeholder="EIN" id="EIN" name="EIN" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="STATETAXNO">State Tax Number</label>
+                                                            <input for="STATETAXNO" type="text" class="form-control" placeholder="If Different From EIN" id="STATETAXNO" name="STATETAXNO" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label asp-for="STREETADD">Street Address</label>
+                                                              <span class="red-star">*</span>
+                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="" id="StreetAddress" name="StreetAddress" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label asp-for="STREETADD2">Street Address 2</label>
+                                                            <span class="red-star">*</span>
+                                                            <input asp-for="STREETADD2" type="text" class="form-control" placeholder="" id="STREETADD2" name="STREETADD2" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="ZipCode">ZipCode</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="ZipCode" type="number" class="form-control" placeholder="" id="ZipCode" name="ZipCode" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+@*                                                
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="CrDr">Credit/Debit Card Number</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="CrDr" type="number" class="form-control" placeholder="1234 1234 1234 1234 " id="CrDr" name="CrDr" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="CVV">CVV/CVC</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="CVV" type="number" class="form-control" placeholder="CVV" id="CVV" name="CVV" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="ExpiryDate">Expiry Date</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="ExpiryDate" type="number" class="form-control" placeholder="MM/YY" id="ExpiryDate" name="ExpiryDate" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="AccountHolder">Account Holder's Name</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="AccountHolder" type="text" class="form-control" placeholder="" id="AccountHolder" name="AccountHolder" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+*@                                                
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label asp-for="BUSINESSPHONE">Mobile Number</label>
+                                                            <span class="red-star">*</span>
+                                                            <input asp-for="BUSINESSPHONE" type="number" class="form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" name="BUSINESSPHONE" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="OPTIONALPHONE">Optional Number</label>
+                                                            <input for="OPTIONALPHONE" type="number" class="form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" name="OPTIONALPHONE">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label asp-for="MEMBERSHIPPLAN">Primary Business</label>
+                                                            <span class="red-star">*</span>
+                                                            <select name="" id="MEMBERSHIPPLAN" class="form-control" required="" name="MEMBERSHIPPLAN">
+                                                                <option value="" disabled="" selected="">Choose Your Plan</option>
+                                                                <option value="1">Monthly $29.99</option>
+                                                                <option value="2">Yearly  $329.89</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" required=""> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-btns">
+                                                            <button class="btn btn-default" id="btnGet" />
+                                                            Submit</i>
+                                                            <button class="btn btn-default resetbtn" onclick="this.form.reset();">Reset</i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Registration Form-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="footer">
+                <div class="container" style="padding-left:0px">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Quick Links</h2>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Trending</h2>
+                            <ul>
+                                <li><a href="#">Sellers</a></li>
+                                <li><a href="#">Buyers</a></li>
+                                <li><a href="#">Membership</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Quick Links</h2>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Career</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Quick Links</h2>
+                            <p><a href="#">800 XXXX XXX</a></p>
+                            <p><a href="#">support@bevport.com</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="newsletter">
+                                <h2 class="elementor-heading-title">BevPort Newsletter</h2>
+                                <p>Be the first to know about our new arrivals and exclusive offers.</p>
+                                <div class="newsletter-form">
+                                    <form name="sds">
+                                        <div class="mc4wp-form-fields">
+                                            <div class="mc_merge_var">
+                                                <input type="email" name="EMAIL" placeholder="Email Address" required="">
+                                            </div>
+                                            <div class="mc_signup_submit">
+                                                <input type="submit" value="Sign up">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ftr-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyrights &copy; 2023 All Rights Reserved by BevPort.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+

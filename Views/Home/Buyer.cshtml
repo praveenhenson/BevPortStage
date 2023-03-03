@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewData["Title"] = "Buyer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:wght@100;300;400;500;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bev Port</title>
+    <link rel='stylesheet' href='css/bootstrap.min.css' media='all' />
+    <link rel='stylesheet' href='css/style.css' media='all' />
+</head>
+<body>
+    <div class="site-wrapper">
+        <div class="main-wrapper">
+            <!--Header Top Menu-->
+           
+            <!--End Header Top Menu-->
+            <section class="inner-page">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="banner-main-heading">
+                                <h1>Buyers</h1>
+                                <p>Wholesale distribution that brings you innovative, emerging and small batch brands.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main-content-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="about-text">
+                                <h5 class="sub-heading">Sellers</h5>
+                                <h2 class="inner-main-heading-content">Distribution. It really can be easy</h2>
+                                <p>Buy the beer that your customers want. It’s free to sign up. Shop online or with your mobile device.</p>
+                                <p>Ea pro tibique comprehensam, sed ea verear numquam molestie. Nam te omittam comprehensam. Ne nam nonumy putent fuisset, reque fabulas usu ne. Ex vel populo appellantur. Eos ne delenit admodum.</p>
+                                <div class="discover-more">
+                                    <a href="#" class="discover-btn">Discover More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-img">
+                                <img class="img-responsive" src="~/images/buyers-bg.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <section class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Quick Links</h2>
+                            <ul>
+                                <li><a href="#" onclick="location.href='@Url.Action("index", "Home")'">Home</a></li>
+                                <li><a href="#" onclick="location.href='@Url.Action("aboutus", "Home")'">About Us</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Trending</h2>
+                            <ul>
+                                <li><a href="#" onclick="location.href='@Url.Action("seller", "Home")'">Sellers</a></li>
+                                <li><a href="#" onclick="location.href='@Url.Action("buyer", "Home")'">Buyers</a></li>
+                                <li><a href="#" onclick="location.href='@Url.Action("membershipplan", "Home")'">Membership</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Quick Links</h2>
+                            <ul>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Career</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h2 class="footer-heading">Quick Links</h2>
+                            <p><a href="#">800 XXXX XXX</a></p>
+                            <p><a href="#">support@bevport.com</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="newsletter">
+                                <h2 class="elementor-heading-title">BevPort Newsletter</h2>
+                                <p>Be the first to know about our new arrivals and exclusive offers.</p>
+                                <div class="newsletter-form">
+                                    <form name="sds">
+                                        <div class="mc4wp-form-fields">
+                                            <div class="mc_merge_var">
+                                                <input type="email" name="EMAIL" placeholder="Email Address" required="">
+                                            </div>
+                                            <div class="mc_signup_submit">
+                                                <input type="submit" value="Sign up">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ftr-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyrights &copy; 2023 All Rights Reserved by BevPort.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
