@@ -32,10 +32,10 @@ namespace BevPort.Controllers
             using (var client = new HttpClient())
             {
                 {
-                    client.BaseAddress = new Uri("https://bevportfunctions20230302142412.azurewebsites.net/");
+                    client.BaseAddress = new Uri("https://bevportfunctions20230303194850.azurewebsites.net/");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = new HttpResponseMessage();
-                    response = await client.PostAsJsonAsync("api/GetUserByEmail?code=4bVkkjifBBsrIOTotbVMhNfD8GzPejUma6GDs670h152AzFuKGrAdw==", user).ConfigureAwait(false);
+                    response = await client.PostAsJsonAsync("api/GetUserByEmail?code=eP9GuxaFm7K0KbbRLu5plJsqXJwciMuGGt4Btyu2K0NeAzFuLlGg_A==", user).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                     {
                         string result = response.Content.ReadAsStringAsync().Result;
@@ -68,7 +68,7 @@ namespace BevPort.Controllers
                 client.BaseAddress = new Uri("https://bevportfunctions20230302142412.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = new HttpResponseMessage();
-                response = await client.PostAsJsonAsync("api/CreateUser?code=7QbRljyxeT30X9PXw5NNMpne5Xd0UHsoheAfv0plb3RVAzFubDKDEg==", user).ConfigureAwait(false);
+                response = await client.PostAsJsonAsync("api/CreateUser?code=kf4nx49vL2EDcF0DAXssQwAxYWa7QjRjbYA3IbDpsKqKAzFu9Lz5qQ==", user).ConfigureAwait(false);
            
 
                 if (response.IsSuccessStatusCode)
@@ -79,9 +79,9 @@ namespace BevPort.Controllers
                     ID = usr!.ID;
                     EmailID = usr.EMAILID!;
                     TempData["ID"] = ID;
-                    PASSWORD = usr.PASSWORD;
+                    PASSWORD = usr.PASSWORD!;
                     TempData["PASSWORD"] = PASSWORD;
-                    SendEmail(user.EMAILID, "Test Subject", Content);
+                    SendEmail(user.EMAILID!, "Welcome to BevPort - Your Registration as a Beer Seller was Successful", Content);
                 }
             }
             return RedirectToAction("Registration");
@@ -100,7 +100,7 @@ namespace BevPort.Controllers
                 client.BaseAddress = new Uri("https://bevportfunctions20230302142412.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = new HttpResponseMessage();
-                response = await client.PostAsJsonAsync("api/UserDetails?code=0Uq0xOx1Hae2omWVcNA6xlAwPPXSup_H40Wrmiknr_FEAzFuGwllIw==\r\n\r\n", Model).ConfigureAwait(false);
+                response = await client.PostAsJsonAsync("api/UserDetails?code=9YgziEOvtjaGZUrs6eWCnzU7EqknNxyI_9uVcrNTztd7AzFud8hXWA==", Model).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {

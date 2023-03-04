@@ -287,9 +287,9 @@
                                         <li>Enhanced Listing</li>
                                         <li>Sell Sheets</li>
                                     </ul>
-                                </div>
+                                </div>    
                                 <div class="price_item_button">
-                        <a href="#" onclick="location.href='@Url.Action("Index", "User")'">Get Started</a>
+                         <a href="@Url.Action("index","User")">Get Started</a>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                                         </ul>
                                     </div>
                                     <div class="price_item_button">
-                            <a href="#" onclick="location.href='@Url.Action("index", "User")'">Get Started</a>
+                            <a href="@Url.Action("index","User")">Get Started</a>
                                     </div>
                                 </div>
                             </div>
@@ -337,23 +337,25 @@
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                    <li><a href="#" onclick="location.href='@Url.Action("index", "Home")'">Home</a></li>
-                    <li><a href="#" onclick="location.href='@Url.Action("aboutus", "Home")'">About Us</a></li>
+                    
+
+                    <li><a href="@Url.Action("index","Home")" >Home</a></li>
+                    <li><a href="@Url.Action("aboutus","Home")" >About Us</a></li>
                                 <li><a href="#">Services</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Trending</h2>
                             <ul>
-                    <li><a href="#" onclick="location.href='@Url.Action("seller", "Home")'">Sellers</a></li>
-                    <li><a href="#" onclick="location.href='@Url.Action("buyer", "Home")'">Buyers</a></li>
-                    <li><a href="#" onclick="location.href='@Url.Action("membershipplan", "Home")'">Membership</a></li>
+                    <li><a href="@Url.Action("seller","Home")" >Sellers</a></li>
+                    <li><a href="@Url.Action("buyer","Home")" >Buyers</a></li>
+                    <li><a href="@Url.Action("membershipplan","Home")" >Membership</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                                <li><a href="#">Contact Us</a></li>
+                    <li><a href="@Url.Action("contactus","Home")">Contact Us</a></li>
                                 <li><a href="#">Career</a></li>
                             </ul>
                         </div>

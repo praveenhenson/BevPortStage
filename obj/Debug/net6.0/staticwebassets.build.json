@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MxtDA4S1wS6qGfwt7AsZErvmV77vv7x+kk4TRdzvOPI=",
+  "Hash": "tY4aI2YZGImLc2ZUqsd7x5Oqxfm2SjOcSR3QGkQ6pDg=",
   "Source": "BevPort",
   "BasePath": "_content/BevPort",
   "Mode": "Default",
@@ -797,6 +797,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\User.js"
+    },
+    {
+      "Identity": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\js\\UserDetails.js",
+      "SourceId": "BevPort",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\",
+      "BasePath": "_content/BevPort",
+      "RelativePath": "js/UserDetails.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\UserDetails.js"
     },
     {
       "Identity": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

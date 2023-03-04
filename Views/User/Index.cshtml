@@ -44,7 +44,6 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                       
                                         
                                         <div class="reg-forms">
                                             <h2 class="main-heading-content">Sign Up</h2>
@@ -72,7 +71,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="EMAILID">Email</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="EMAILID"  class="form-control" placeholder="" id="Email" name="EMAILID"  required="">
+                                                            <input asp-for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID" required="">
                                                             <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Message</label>
                                                         </div>
                                                     </div>
@@ -80,7 +79,8 @@
                                                         <div class="form-group">
                                                             <label for="CONFIRMEMAIL">Confirm Email</label>
                                                              <span class="red-star">*</span>
-                                                            <input for="CONFIRMEMAIL"  class="form-control" placeholder="" id="ConfirmEmail" name="Confirm_Email" required="">
+                                                            <input for="CONFIRMEMAIL" class="form-control" placeholder="" id="CONFIRMEMAIL" name="CONFIRMEMAIL" required="">
+                                                            <div id="showerrorEmail"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,28 +90,28 @@
                                                         <div class="form-group">
                                                             <label asp-for="PASSWORD">Password</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="Password" name="PASSWORD" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="">
+                                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD"  required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="CONFIRMPASSWORD">Confirm Password</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="CONFIRMPASSWORD" type="password" class="form-control" placeholder="" id="ConfirmPassword" name="Confirm_Password" required="">
+                                                            <input for="CONFIRMPASSWORD" type="password" class="form-control" placeholder="" id="CONFIRMPASSWORD" name="CONFIRMPASSWORD" required="">
+                                                            <div id="showerror"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label asp-for="Business_Type">Primary Business</label>
+                                                            <label asp-for="USERTYPE">Primary Business</label>
                                                             <span class="red-star">*</span>
-                                                            <select name="" id="Business_Type" class="form-control" required="" name="Business_Type">
-                                                                <option value="" disabled="" selected="">Choose Option</option>
-                                                                <option value="class 01">Brewery</option>
-                                                                <option value="class 02">Bar</option>
-                                                                <option value="class 03">Restaurant</option>
+                                                            <select name="USERTYPE" id="USERTYPE" class="form-control" required="">
+                                                                <option value="" disabled="" selected=true>Choose Option</option>
+                                                                <option value="2">Buyer</option>
+                                                                <option value="1">Seller</option>
+                                                                @*<option value="class 03">Restaurant</option>
                                                                 <option value="class 04">Retailer</option>
                                                                 <option value="class 05">Venue</option>
                                                                 <option value="class 06">Event Promoter</option>
@@ -121,7 +121,7 @@
                                                                 <option value="class 10">Rail Line</option>
                                                                 <option value="class 11">Airline</option>
                                                                 <option value="class 12">Boat</option>
-                                                                <option value="class 13">Corporate HQ</option>
+                                                                <option value="class 13">Corporate HQ</option>*@
                                                             </select>
                                                         </div>
                                                     </div>

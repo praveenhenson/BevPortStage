@@ -1,6 +1,8 @@
 ﻿using BevPort.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 
 namespace BevPort.Controllers
 {
@@ -29,8 +31,57 @@ namespace BevPort.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult contactus()
+        [HttpPost]
+        public IActionResult contactus(Users user)
         {
+
+            string Content = "Hello Mr " + user.FIRSTNAME + " " + user.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
+
+
+
+            SendEmail(user.EMAILID!, "Test Subject", Content);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail(string receiver, string subject, string message)
+        {
+            try
+            {
+
+                var senderEmail = new MailAddress("mcaashu214@gmail.com", "Ashutosh");
+                var receiverEmail = new MailAddress(receiver, "Receiver");
+                var password = "xelntkafoavtckfk";
+                var sub = subject;
+                var body = message;
+                var smtp = new SmtpClient
+                {
+
+
+                    EnableSsl = true,
+                    UseDefaultCredentials = false,
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+
+                    Credentials = new NetworkCredential(senderEmail.Address, password)
+                };
+                using (var mess = new MailMessage(senderEmail, receiverEmail)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(mess);
+                }
+                return View();
+
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Some Error";
+            }
             return View();
         }
         public IActionResult aboutus()

@@ -21,6 +21,10 @@
     <link rel='stylesheet' href='css/style.css' media='all' />
 </head>
 <body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
+
+
     <div class="site-wrapper">
         <div class="main-wrapper">
             <!--Header Top Menu-->
@@ -71,7 +75,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="STREETADD">Street Address</label>
                                                               <span class="red-star">*</span>
-                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="" id="StreetAddress" name="StreetAddress" required="">
+                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="" id="STREETADD" name="STREETADD" required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -93,53 +97,54 @@
                                                     </div>
                                                 </div>
                                                
-@*                                                
+                                               
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="CrDr">Credit/Debit Card Number</label>
+                                                            <label for="cc-number">Credit/Debit Card Number</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="CrDr" type="number" class="form-control" placeholder="1234 1234 1234 1234 " id="CrDr" name="CrDr" required="">
+                                                            <input for="" type="tel" class=" form-control cc-number" placeholder="1234 1234 1234 1234 " maxlength="16" id="cc-number" autocomplete="cc-number" name="" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="CVV">CVV/CVC</label>
+                                                            <label for="cc-cvc">CVV/CVC</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="CVV" type="number" class="form-control" placeholder="CVV" id="CVV" name="CVV" required="">
+                                                            <input for="" type="tel" class="form-control cc-cvc" maxlength="4" autocomplete="off" placeholder="CVV" id="cc-cvc" name="" required="">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="ExpiryDate">Expiry Date</label>
+                                                            <label for="cc-exp">Expiry Date</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="ExpiryDate" type="number" class="form-control" placeholder="MM/YY" id="ExpiryDate" name="ExpiryDate" required="">
+                                                            <input for="" type="tel" maxlength="4" class=" form-control cc-exp" placeholder="MM/YY" id="cc-exp" name="" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="AccountHolder">Account Holder's Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="AccountHolder" type="text" class="form-control" placeholder="" id="AccountHolder" name="AccountHolder" required="">
+                                                            <input for="" type="text" class="form-control" placeholder="" id="AccountHolder" name="" required="">
                                                         </div>
                                                     </div>
                                                 </div>
                                                
-*@                                                
+                                               
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="BUSINESSPHONE">Mobile Number</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="BUSINESSPHONE" type="number" class="form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" name="BUSINESSPHONE" required="">
+                                                            <input asp-for="BUSINESSPHONE" type="number" class="form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" name="BUSINESSPHONE" onkeyup="validation()" required="">
+                                                            <div id="validmobile"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="OPTIONALPHONE">Optional Number</label>
-                                                            <input for="OPTIONALPHONE" type="number" class="form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" name="OPTIONALPHONE">
+                                                            <label asp-for="OPTIONALPHONE">Optional Number</label>
+                                                            <input asp-for="OPTIONALPHONE" type="number" class="form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" name="OPTIONALPHONE">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -148,8 +153,8 @@
                                                         <div class="form-group">
                                                             <label asp-for="MEMBERSHIPPLAN">Primary Business</label>
                                                             <span class="red-star">*</span>
-                                                            <select name="" id="MEMBERSHIPPLAN" class="form-control" required="" name="MEMBERSHIPPLAN">
-                                                                <option value="" disabled="" selected="">Choose Your Plan</option>
+                                                            <select name="MEMBERSHIPPLAN" id="MEMBERSHIPPLAN" class="form-control" required="" name="MEMBERSHIPPLAN">
+                                                                <option value="" disabled="" selected=true>Choose Your Plan</option>
                                                                 <option value="1">Monthly $29.99</option>
                                                                 <option value="2">Yearly  $329.89</option>
                                                             </select>
@@ -170,7 +175,7 @@
                                                         <div class="form-btns">
                                                             <button class="btn btn-default" id="btnGet" />
                                                             Submit</i>
-                                                            <button class="btn btn-default resetbtn" onclick="this.form.reset();">Reset</i>
+                                                            <button class="btn btn-default resetbtn" type="reset">Reset</i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -263,4 +268,6 @@
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<script src="~/js/userdetails.js"></script>
 
