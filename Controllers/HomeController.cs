@@ -31,15 +31,17 @@ namespace BevPort.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        public IActionResult contactus()
+        {
+
+            return View();
+        }
         [HttpPost]
         public IActionResult contactus(Users user)
         {
 
             string Content = "Hello Mr " + user.FIRSTNAME + " " + user.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
-
-
-
-            SendEmail(user.EMAILID!, "Test Subject", Content);
+            SendEmail(user.EMAILID!, "BevPort Contact", Content);
             return View();
         }
 
