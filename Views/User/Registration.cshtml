@@ -119,7 +119,8 @@
                                                         <div class="form-group">
                                                             <label for="cc-exp">Expiry Date</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="" type="tel" maxlength="4" class=" form-control cc-exp" placeholder="MM/YY" id="cc-exp" name="" required="">
+                                                            <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MM/YY" id="ExpiryDate" name="" onkeyup="ValidateExpiryDate()" required="">
+                                                            <div id="validexpdate"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -137,14 +138,15 @@
                                                         <div class="form-group">
                                                             <label asp-for="BUSINESSPHONE">Mobile Number</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="BUSINESSPHONE" type="number" class="form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" name="BUSINESSPHONE" onkeyup="validation()" required="">
+                                                            <input asp-for="BUSINESSPHONE" type="text" class="phone form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" name="BUSINESSPHONE" onkeyup="ValidateMobile()" required="">
                                                             <div id="validmobile"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="OPTIONALPHONE">Optional Number</label>
-                                                            <input asp-for="OPTIONALPHONE" type="number" class="form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" name="OPTIONALPHONE">
+                                                            <input asp-for="OPTIONALPHONE" type="text" class="optionalphone form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" onkeyup="ValidatePhone()" name="OPTIONALPHONE">
+                                                            <div id="validoptionalmobile"></div>
                                                         </div>
                                                     </div>
                                                 </div>
