@@ -65,7 +65,7 @@ namespace BevPort.Controllers
             int ID;string PASSWORD;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://bevportfunctions20230302142412.azurewebsites.net/");
+                client.BaseAddress = new Uri("https://bevportfunctions20230303194850.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = new HttpResponseMessage();
                 response = await client.PostAsJsonAsync("api/CreateUser?code=kf4nx49vL2EDcF0DAXssQwAxYWa7QjRjbYA3IbDpsKqKAzFu9Lz5qQ==", user).ConfigureAwait(false);
@@ -97,7 +97,7 @@ namespace BevPort.Controllers
             DataTable responseObj = new DataTable();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://bevportfunctions20230302142412.azurewebsites.net/");
+                client.BaseAddress = new Uri("https://bevportfunctions20230303194850.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = new HttpResponseMessage();
                 response = await client.PostAsJsonAsync("api/UserDetails?code=9YgziEOvtjaGZUrs6eWCnzU7EqknNxyI_9uVcrNTztd7AzFud8hXWA==", Model).ConfigureAwait(false);
