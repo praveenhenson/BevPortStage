@@ -27,6 +27,8 @@ namespace BevPort.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(Users user)
         {
+            if (ModelState.IsValid)
+            {
             ViewBag.Message = "";
             DataTable responseObj = new DataTable();
             using (var client = new HttpClient())
@@ -36,7 +38,7 @@ namespace BevPort.Controllers
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     HttpResponseMessage response = new HttpResponseMessage();
                     response = await client.PostAsJsonAsync("api/GetUserByEmail?code=eP9GuxaFm7K0KbbRLu5plJsqXJwciMuGGt4Btyu2K0NeAzFuLlGg_A==", user).ConfigureAwait(false);
-                if (response.IsSuccessStatusCode)
+                    if (response.IsSuccessStatusCode)
                     {
                         string result = response.Content.ReadAsStringAsync().Result;
                         Users? usr = new Users();
@@ -54,13 +56,13 @@ namespace BevPort.Controllers
 
             }
             string usertype = "Buyer";
-            if(user.USERTYPE == "1")
+            if (user.USERTYPE == "1")
             {
                 usertype = "Seller";
             }
-            string Content = "Your Registration as a Beer "+ usertype +" was Successful\r\nDear "+user.FIRSTNAME+" "+user.LASTNAME+",\r\nWe are thrilled to welcome you to BevPort, the premier online marketplace for beer sellers and buyers. We have approved your registration, and we are excited to have you as a seller on our platform.\r\nAs a registered seller, you now have access to our vast network of beer buyers, making it easy for you to expand your customer base and grow your business. You can start listing your beers on our platform immediately, and our team is here to support you every step of the way.\r\nTo start, we would like to share with you some important details regarding your account:\r\n•\tYour Email ID is:"+ user.EMAILID+"\r\n•\tYour password is: " + TempData["PASSWORD"] + "\r\n•\tYou can access our platform by logging in to your account.\r\nAs a registered seller on BevPort, you will also have access to our marketing and promotional materials. We believe that our collective efforts will increase the visibility of your beers and ultimately lead to the growth of your business.\r\nIf you have any questions, please feel free to reach out to us at [insert contact information]. Our team is always available to assist you.\r\nOnce again, welcome to BevPort. We are thrilled to have you as a part of our community and look forward to working with you to grow your business.\r\nCheers!\r\n[]\r\nBevPort Team\r\n";
-          
-            int ID;string PASSWORD;
+            string Content = "Your Registration as a Beer " + usertype + " was Successful\r\nDear " + user.FIRSTNAME + " " + user.LASTNAME + ",\r\nWe are thrilled to welcome you to BevPort, the premier online marketplace for beer sellers and buyers. We have approved your registration, and we are excited to have you as a seller on our platform.\r\nAs a registered seller, you now have access to our vast network of beer buyers, making it easy for you to expand your customer base and grow your business. You can start listing your beers on our platform immediately, and our team is here to support you every step of the way.\r\nTo start, we would like to share with you some important details regarding your account:\r\n•\tYour Email ID is:" + user.EMAILID + "\r\n•\tYour password is: " + TempData["PASSWORD"] + "\r\n•\tYou can access our platform by logging in to your account.\r\nAs a registered seller on BevPort, you will also have access to our marketing and promotional materials. We believe that our collective efforts will increase the visibility of your beers and ultimately lead to the growth of your business.\r\nIf you have any questions, please feel free to reach out to us at [insert contact information]. Our team is always available to assist you.\r\nOnce again, welcome to BevPort. We are thrilled to have you as a part of our community and look forward to working with you to grow your business.\r\nCheers!\r\n[]\r\nBevPort Team\r\n";
+
+            int ID; string PASSWORD;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://bevportfunctions20230303194850.azurewebsites.net/");
@@ -78,9 +80,13 @@ namespace BevPort.Controllers
                     PASSWORD = usr.PASSWORD!;
                     TempData["PASSWORD"] = PASSWORD;
                     SendEmail(user.EMAILID!, "Welcome to BevPort - Your Registration as a Beer Seller was Successful", Content);
+                    return RedirectToAction("Registration");
+
+                    }
                 }
-            }
-            return RedirectToAction("Registration");
+               
+        }
+            return View();
         }
         public IActionResult Registration()
         {
@@ -105,6 +111,7 @@ namespace BevPort.Controllers
                     //SendEmail(EmailID, "Welcome to BevPort", "Hello this is a Test");
                 }
             }
+            ViewBag.Messages = "Registration Successful";
             return RedirectToAction("Registration");
 
 

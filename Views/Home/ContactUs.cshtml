@@ -1,9 +1,8 @@
 ﻿@model BevPort.Models.Users
 @{
     ViewData["Title"] = "ContactUs";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Default/DefaultLayout.cshtml";
 }   <!--End Header Top Menu-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Bev Port</title>
-    <link rel='stylesheet' href='css/bootstrap.min.css' media='all' />
-    <link rel='stylesheet' href='css/style.css' media='all' />
+    <script src="~/js/pages/contactus.js"></script>
+    @*<link rel='stylesheet' href='css/bootstrap.min.css' media='all' />
+    <link rel='stylesheet' href='css/style.css' media='all' />*@
 </head>
 <body>
     <div class="site-wrapper">
@@ -64,18 +64,20 @@
                             <div class="contact-form-area">
                                 <h2 class="inner-main-heading-content">Drop Us a Line</h2>
                                 <p class="content-para">Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
+                                @Html.ValidationSummary(true)
                                 <form name="contact" method="post" name="Form">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="FIRSTNAME">First Name <span class="red-tick">*</span></label>
-                                                <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME" required="">
+                                                <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME">
+                                               
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="LASTNAME">Last Name <span class="red-tick">*</span></label>
-                                                <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" name="LASTNAME" required="">
+                                                <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" name="LASTNAME">
                                             </div>
                                         </div>
                                     </div>
@@ -83,12 +85,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label asp-for="EMAILID">Email <span class="red-tick">*</span></label>
-                                                <input asp-for="EMAILID" type="text" class="form-control" name="EMAILID" placeholder="" required="">
+                                                <input asp-for="EMAILID" type="text" class="form-control" name="EMAILID" placeholder="" onkeypress="ValidateEmail()">
                                             </div>
 
 
 
-                                        </div>
+                                        </div> 
+                                       @*
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email">Primary Business</label>
@@ -108,20 +111,24 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    *@
+                                    
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="email">What can we do for you?</label>
                                                 <span class="red-tick">*</span>
-                                                <textarea for="Content" name="Content" rows="3" class="form-control" required=""></textarea>
+                                                <textarea for="Content" id="Content" name="Content" rows="3" class="form-control" required=""></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-btns">
-                                                <button class="btn btn-default">Submit</button>
+                                                <button id="ContactUs" name="save" class="btn btn-default" onclick="SaveContactUs();">Submit</button>
+                                                <br />
+                                                <label for="Message" style="color:green;padding-top:7px;">@ViewBag.Message</label>
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +166,7 @@
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                                <li><a href="@Url.Action("contactus","Home")">Contact Us</a></li>
+                                <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
                                 <li><a href="#">Career</a></li>
                             </ul>
                         </div>
@@ -207,8 +214,8 @@
 
 
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+ @*   <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>*@
 </body>
 </html>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+

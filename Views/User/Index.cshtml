@@ -47,14 +47,16 @@
                                         
                                         <div class="reg-forms">
                                             <h2 class="main-heading-content">Sign Up</h2>
+                                            <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Message</label>
+
                                             <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
-                                            <form id="FormID" action="" onsubmit="return myfun()" name="Form" method="post" required>
+                                            <form id="FormID" action="" name="Form" method="post">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="FIRSTNAME">First Name</label> 
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME" required="">
+                                                            <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME">
 
                                                         </div>
                                                     </div>
@@ -62,7 +64,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="LASTNAME">Last Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" id="LastName" name="LASTNAME" required="">
+                                                            <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" id="LASTNAME" name="LASTNAME">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,15 +73,15 @@
                                                         <div class="form-group">
                                                             <label asp-for="EMAILID">Email</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID" required="">
-                                                            <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Message</label>
+                                                            <input asp-for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID">
+                                                            @*<div id="validateemail"></div>*@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="CONFIRMEMAIL">Confirm Email</label>
                                                              <span class="red-star">*</span>
-                                                            <input for="CONFIRMEMAIL" class="form-control" placeholder="" id="CONFIRMEMAIL" name="CONFIRMEMAIL" required="">
+                                                            <input for="CONFIRMEMAIL" class="form-control" placeholder="" id="CONFIRMEMAIL" name="CONFIRMEMAIL">
                                                             <div id="showerrorEmail"></div>
                                                         </div>
                                                     </div>
@@ -90,14 +92,14 @@
                                                         <div class="form-group">
                                                             <label asp-for="PASSWORD">Password</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD"  required="">
+                                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="CONFIRMPASSWORD">Confirm Password</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="CONFIRMPASSWORD" type="password" class="form-control" placeholder="" id="CONFIRMPASSWORD" name="CONFIRMPASSWORD" required="">
+                                                            <input for="CONFIRMPASSWORD" type="password" class="form-control" placeholder="" id="CONFIRMPASSWORD" name="CONFIRMPASSWORD">
                                                             <div id="showerror"></div>
                                                         </div>
                                                     </div>
@@ -107,7 +109,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="USERTYPE">Primary Business</label>
                                                             <span class="red-star">*</span>
-                                                            <select name="USERTYPE" id="USERTYPE" class="form-control" required="">
+                                                            <select name="USERTYPE" id="USERTYPE" class="form-control">
                                                                 <option value="" disabled="" selected=true>Choose Option</option>
                                                                 <option value="2">Buyer</option>
                                                                 <option value="1">Seller</option>
@@ -138,7 +140,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-btns">
-                                                            <button class="btn btn-default" id="btnGet" />
+                                                            <button class="btn btn-default" onclick="CreateUser()" />
                                                             Submit</i>
                                                             <button class="btn btn-default resetbtn" type="reset">Reset</i>
                                                         </div>
@@ -326,8 +328,8 @@
 </body>
 
 </html>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="~/js/user.js"></script>

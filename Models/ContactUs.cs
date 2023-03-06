@@ -2,16 +2,15 @@
 
 namespace BevPort.Models
 {
-    public class Users
+    public class ContactUs
     {
+        [Key]
         public int ID { get; set; }
+        [Required(ErrorMessage = "Please enter name")]
+        [StringLength(100)]
         public string? FIRSTNAME { get; set; }
         public string? LASTNAME { get; set; }
-
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
         public string? EMAILID { get; set; }
-        public string? USERTYPE { get; set; }
-        public string? PASSWORD { get; set; }
+        public string? Content { get; set; }
     }
 }

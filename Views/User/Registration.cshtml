@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Bev Port - Registration</title>
-    <link rel='stylesheet' href='css/bootstrap.min.css' media='all' />
-    <link rel='stylesheet' href='css/style.css' media='all' />
+    <link rel='stylesheet' href='~/css/bootstrap.min.css' media='all' />
+    <link rel='stylesheet' href='~/css/style.css' media='all' />
 </head>
 <body>
 
@@ -34,6 +34,7 @@
             <!--Registration Form-->
             <section class="registration-page">
                 <div class="container">
+                    <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Messages</label>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="inner">
@@ -53,14 +54,15 @@
                                                         <div class="form-group">
                                                             <label asp-for="BUSINESSNAME">Business Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="BUSINESSNAME" type="text" class="form-control" placeholder="" name="BUSINESSNAME" required="">
+                                                            <input asp-for="BUSINESSNAME" type="text" class="form-control" placeholder="Business Name" name="BUSINESSNAME" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="EIN">Employer Identification Number</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="EIN" type="text" class="form-control" placeholder="EIN" id="EIN" name="EIN" required="">
+                                                            <input asp-for="EIN" type="text" class="ein form-control" placeholder="EIN" id="EIN" onkeyup="ValidateEIN()" name="EIN" required="">
+                                                            <div id="validein"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -75,7 +77,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="STREETADD">Street Address</label>
                                                               <span class="red-star">*</span>
-                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="" id="STREETADD" name="STREETADD" required="">
+                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="Street Address" id="STREETADD" name="STREETADD" required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -85,14 +87,16 @@
                                                         <div class="form-group">
                                                             <label asp-for="STREETADD2">Street Address 2</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="STREETADD2" type="text" class="form-control" placeholder="" id="STREETADD2" name="STREETADD2" required="">
+                                                            <input asp-for="STREETADD2" type="text" class="form-control" placeholder="Street Address 2" id="STREETADD2" name="STREETADD2" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="ZipCode">ZipCode</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="ZipCode" type="number" class="form-control" placeholder="" id="ZipCode" name="ZipCode" required="">
+                                                            <input for="ZipCode" type="text" maxlength="5" class="zip form-control" placeholder="ZipCode" id="ZipCode" name="ZipCode" onkeyup="ValidateZip()" required="">
+                                                            <div id="validzip"></div>
+                                                       
                                                         </div>
                                                     </div>
                                                 </div>
@@ -119,7 +123,7 @@
                                                         <div class="form-group">
                                                             <label for="cc-exp">Expiry Date</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MM/YY" id="ExpiryDate" name="" onkeyup="ValidateExpiryDate()" required="">
+                                                            <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MMYY" id="ExpiryDate" name="" onkeyup="ValidateExpiryDate()" required="">
                                                             <div id="validexpdate"></div>
                                                         </div>
                                                     </div>
@@ -127,7 +131,7 @@
                                                         <div class="form-group">
                                                             <label for="AccountHolder">Account Holder's Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="" type="text" class="form-control" placeholder="" id="AccountHolder" name="" required="">
+                                                            <input for="" type="text" class="form-control" placeholder="Account Holder's Name" id="AccountHolder" name="" required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -194,38 +198,38 @@
             </section>
 
 
-
             <section class="footer">
-                <div class="container" style="padding-left:0px">
+                <div class="container">
                     <div class="row">
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About Us</a></li>
+
+
+                                <li><a href="@Url.Action("index","Home")">Home</a></li>
+                                <li><a href="@Url.Action("aboutus","Home")">About Us</a></li>
                                 <li><a href="#">Services</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Trending</h2>
                             <ul>
-                                <li><a href="#">Sellers</a></li>
-                                <li><a href="#">Buyers</a></li>
-                                <li><a href="#">Membership</a></li>
+                                <li><a href="@Url.Action("seller","Home")">Sellers</a></li>
+                                <li><a href="@Url.Action("buyer","Home")">Buyers</a></li>
+                                <li><a href="@Url.Action("membershipplan","Home")">Membership</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
                                 <li><a href="#">Career</a></li>
-                                <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <p><a href="#">800 XXXX XXX</a></p>
-                            <p><a href="#">support@bevport.com</a></p>
+                            <p><a mailto:href="#">support@bevport.com</a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -263,13 +267,9 @@
             </section>
         </div>
     </div>
-
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-
+   <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 <script src="~/js/userdetails.js"></script>
 

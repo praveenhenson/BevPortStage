@@ -15,6 +15,32 @@ function ValidateMobile() {
     }
 }
 
+function ValidateEIN() {
+    var EIN = document.getElementById('EIN').value;
+    if (EIN != "") {
+        $('.ein').inputmask('99-9999999');
+        return true;
+    }
+    else {
+        $('#validein').html('Invalid EIN Number');
+        $('#validein').css('color', 'red');
+        return false;
+    }
+}
+
+function ValidateZip() {
+    var Zipcode = document.getElementById('ZipCode').value;
+    if (Zipcode != "") {
+        $('.zip').inputmask('99999');
+        return true;
+    }
+    else {
+        $('#validzip').html('Invalid Zip Code');
+        $('#validzip').css('color', 'red');
+        return false;
+    }
+}
+
 function ValidatePhone() {
     var OptionalPhone = document.getElementById('OPTIONALPHONE').value;
     if (OptionalPhone != "") {

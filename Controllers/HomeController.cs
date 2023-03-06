@@ -31,18 +31,19 @@ namespace BevPort.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult contactus()
+        public IActionResult ContactUs()
         {
 
             return View();
         }
         [HttpPost]
-        public IActionResult contactus(Users user)
+        public IActionResult ContactUs(ContactUs contact)
         {
-
-            string Content = "Hello Mr " + user.FIRSTNAME + " " + user.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
-            SendEmail(user.EMAILID!, "BevPort Contact", Content);
-            return View();
+                string Content = "Hello Mr " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
+                SendEmail(contact.EMAILID!, "BevPort Contact", Content);
+                return View();
+            
+            //return View();
         }
 
         [HttpPost]
@@ -77,6 +78,7 @@ namespace BevPort.Controllers
                 {
                     smtp.Send(mess);
                 }
+                ViewBag.Message = "Thank you for contacting us.";
                 return View();
 
             }
