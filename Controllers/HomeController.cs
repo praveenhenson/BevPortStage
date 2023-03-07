@@ -40,7 +40,7 @@ namespace BevPort.Controllers
         public IActionResult ContactUs(ContactUs contact)
         {
             //string Content = "Hello Mr " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
-            string Content = "Hii " + contact.FIRSTNAME + " " + contact.LASTNAME + "\r\n  Thankyou for Contacting us our Bevport Team will soon Contact you !!  \r\n  Have a great day!  \r\n Regards,  \r\n  BevPort Team ";
+            string Content = "Hi " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you! \n  Have a great day!  \r\n Regards,  \n  BevPort Team ";
             SendEmail(contact.EMAILID!, "BevPort Contact", Content);
             ViewBag.ContactMessage = "Thank you for contacting us.";
             return View();
