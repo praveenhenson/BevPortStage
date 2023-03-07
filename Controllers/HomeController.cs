@@ -39,11 +39,11 @@ namespace BevPort.Controllers
         [HttpPost]
         public IActionResult ContactUs(ContactUs contact)
         {
-                string Content = "Hello Mr " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
-                SendEmail(contact.EMAILID!, "BevPort Contact", Content);
-                return View();
-            
-            //return View();
+            //string Content = "Hello Mr " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
+            string Content = "Hii " + contact.FIRSTNAME + " " + contact.LASTNAME + "\r\n  Thankyou for Contacting us our Bevport Team will soon Contact you !!  \r\n  Have a great day!  \r\n Regards,  \r\n  BevPort Team ";
+            SendEmail(contact.EMAILID!, "BevPort Contact", Content);
+            ViewBag.ContactMessage = "Thank you for contacting us.";
+            return View();
         }
 
         [HttpPost]
@@ -52,15 +52,13 @@ namespace BevPort.Controllers
             try
             {
 
-                var senderEmail = new MailAddress("mcaashu214@gmail.com", "Ashutosh");
+                var senderEmail = new MailAddress("hellobevport@gmail.com", "BevPort");
                 var receiverEmail = new MailAddress(receiver, "Receiver");
-                var password = "xelntkafoavtckfk";
+                var password = "brerjdkbtphvxnjt";
                 var sub = subject;
                 var body = message;
                 var smtp = new SmtpClient
                 {
-
-
                     EnableSsl = true,
                     UseDefaultCredentials = false,
                     Host = "smtp.gmail.com",
@@ -78,7 +76,6 @@ namespace BevPort.Controllers
                 {
                     smtp.Send(mess);
                 }
-                ViewBag.Message = "Thank you for contacting us.";
                 return View();
 
             }

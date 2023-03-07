@@ -65,61 +65,61 @@
                                 <h2 class="inner-main-heading-content">Drop Us a Line</h2>
                                 <p class="content-para">Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
                                 @Html.ValidationSummary(true)
-                                <form name="contact" method="post" name="Form">
+                                <form name="contact" method="post" name="Form" onsubmit="event.preventDefault();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="FIRSTNAME">First Name <span class="red-tick">*</span></label>
-                                                <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME">
-                                               
+                                                <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME" oninput="ValidateFName()" onkeypress="ValidateFName()">
+
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="LASTNAME">Last Name <span class="red-tick">*</span></label>
-                                                <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" name="LASTNAME">
+                                                <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" name="LASTNAME" oninput="ValidateLName()" onkeypress="ValidateLName()">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label asp-for="EMAILID">Email <span class="red-tick">*</span></label>
-                                                <input asp-for="EMAILID" type="text" class="form-control" name="EMAILID" placeholder="" onkeypress="ValidateEmail()">
+                                                <input asp-for="EMAILID" type="text" class="form-control" name="EMAILID" placeholder="" oninput="ValidateEmail()" onkeypress="ValidateEmail()">
                                             </div>
 
 
 
-                                        </div> 
-                                       @*
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="email">Primary Business</label>
-                                                <span class="red-tick">*</span>
-                                                <select name="" id="" class="form-control" required="">
-                                                    <option value="" disabled="" selected=true>Choose Option</option>
-                                                    <option value="1">Buyer</option>
-                                                    <option value="2">Seller</option>
-                                                    <option value="3">Sales/Marketing Partner</option>
-                                                    <option value="4">Importer</option>
-                                                    <option value="5">Partner</option>
-                                                    <option value="6">Media</option>
-                                                    <option value="7">Competitor</option>
-                                                    <option value="8">RNDC/YMCO</option>
-                                                    <option value="9">Industry Contact</option>
-                                                    <option value="10">Other</option>
-                                                </select>
-                                            </div>
                                         </div>
-                                    *@
-                                    
+                                        @*
+                                        <div class="col-md-6">
+                                        <div class="form-group">
+                                        <label for="email">Primary Business</label>
+                                        <span class="red-tick">*</span>
+                                        <select name="" id="" class="form-control" required="">
+                                        <option value="" disabled="" selected=true>Choose Option</option>
+                                        <option value="1">Buyer</option>
+                                        <option value="2">Seller</option>
+                                        <option value="3">Sales/Marketing Partner</option>
+                                        <option value="4">Importer</option>
+                                        <option value="5">Partner</option>
+                                        <option value="6">Media</option>
+                                        <option value="7">Competitor</option>
+                                        <option value="8">RNDC/YMCO</option>
+                                        <option value="9">Industry Contact</option>
+                                        <option value="10">Other</option>
+                                        </select>
+                                        </div>
+                                        </div>
+                                        *@
+
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="email">What can we do for you?</label>
                                                 <span class="red-tick">*</span>
-                                                <textarea for="Content" id="Content" name="Content" rows="3" class="form-control" required=""></textarea>
+                                                <textarea for="Content" id="Content" name="Content" rows="3" class="form-control" oninput="ValidateContent()" onkeypress="ValidateContent()" required=""></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                                             <div class="form-btns">
                                                 <button id="ContactUs" name="save" class="btn btn-default" onclick="SaveContactUs();">Submit</button>
                                                 <br />
-                                                <label for="Message" style="color:green;padding-top:7px;">@ViewBag.Message</label>
+                                                <label for="Message" style="color:green;padding-top:7px;">@ViewBag.ContactMessage</label>
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@
 
 
 
- @*   <script src="js/jquery.min.js"></script>
+    @*   <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>*@
 </body>
 </html>

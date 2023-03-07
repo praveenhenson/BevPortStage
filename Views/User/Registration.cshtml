@@ -23,8 +23,6 @@
 <body>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
-
-
     <div class="site-wrapper">
         <div class="main-wrapper">
             <!--Header Top Menu-->
@@ -48,20 +46,20 @@
                                         <div class="reg-forms">
                                             <h2 class="main-heading-content">Sign Up</h2>
                                             <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
-                                            <form id="FormID" action="" onsubmit="return myfun()" name="Form" method="post" required>
+                                            <form id="FormReg" name="FormReg" method="post" onsubmit="event.preventDefault();">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="BUSINESSNAME">Business Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="BUSINESSNAME" type="text" class="form-control" placeholder="Business Name" name="BUSINESSNAME" required="">
+                                                            <input asp-for="BUSINESSNAME" type="text" class="form-control" placeholder="Business Name" id="BUSINESSNAME" name="BUSINESSNAME" oninput="RemoveMessageBName()" onchange="RemoveMessageBName()" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="EIN">Employer Identification Number</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="EIN" type="text" class="ein form-control" placeholder="EIN" id="EIN" onkeyup="ValidateEIN()" name="EIN" required="">
+                                                            <input asp-for="EIN" type="text" class="ein form-control" placeholder="EIN" id="EIN" oninput="ValidateEIN()" onchange="ValidateEIN()" name="EIN" required="">
                                                             <div id="validein"></div>
                                                         </div>
                                                     </div>
@@ -70,14 +68,14 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="STATETAXNO">State Tax Number</label>
-                                                            <input for="STATETAXNO" type="text" class="form-control" placeholder="If Different From EIN" id="STATETAXNO" name="STATETAXNO" >
+                                                            <input for="STATETAXNO" type="text" class="form-control" placeholder="If Different From EIN" id="STATETAXNO" oninput="RemoveMessagetaxnno()" onchange="RemoveMessagetaxnno()" name="STATETAXNO">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="STREETADD">Street Address</label>
-                                                              <span class="red-star">*</span>
-                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="Street Address" id="STREETADD" name="STREETADD" required="">
+                                                            <span class="red-star">*</span>
+                                                            <input asp-for="STREETADD" type="text" class="form-control" placeholder="Street Address" id="STREETADD" oninput="RemoveMessageSt()" onchange="RemoveMessageSt()" name="STREETADD" required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,21 +85,42 @@
                                                         <div class="form-group">
                                                             <label asp-for="STREETADD2">Street Address 2</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="STREETADD2" type="text" class="form-control" placeholder="Street Address 2" id="STREETADD2" name="STREETADD2" required="">
+                                                            <input asp-for="STREETADD2" type="text" class="form-control" placeholder="Street Address 2" oninput="RemoveMessageSt2()" onchange="RemoveMessageSt2()" id="STREETADD2" name="STREETADD2" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="ZipCode">ZipCode</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="ZipCode" type="text" maxlength="5" class="zip form-control" placeholder="ZipCode" id="ZipCode" name="ZipCode" onkeyup="ValidateZip()" required="">
+                                                            <input for="ZipCode" type="text" maxlength="5" class="zip form-control" placeholder="ZipCode" id="ZipCode" oninput="RemoveMessageZip()" onchange="RemoveMessageZip()" name="ZipCode" onkeyup="ValidateZip()" required="">
                                                             <div id="validzip"></div>
-                                                       
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
-                                               
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="State">State</label>
+                                                            <span class="red-star">*</span>
+                                                            <select name="State" class="form-control" id="State">
+                                                                <option value="" disabled="" selected=true>Choose State</option>
+                                                                <option value="1">Texas</option>
+                                                                <option value="2">California</option>
+                                                                <option value="3">Florida</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="City">City </label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="City" id="CITY" type="text" class="form-control" placeholder="City">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -123,7 +142,7 @@
                                                         <div class="form-group">
                                                             <label for="cc-exp">Expiry Date</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MMYY" id="ExpiryDate" name="" onkeyup="ValidateExpiryDate()" required="">
+                                                            <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MMYY" id="ExpiryDate" name="" required="">
                                                             <div id="validexpdate"></div>
                                                         </div>
                                                     </div>
@@ -135,21 +154,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
-                                               
+
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="BUSINESSPHONE">Mobile Number</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="BUSINESSPHONE" type="text" class="phone form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" name="BUSINESSPHONE" onkeyup="ValidateMobile()" required="">
+                                                            <input asp-for="BUSINESSPHONE" type="text" class="phone form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" oninput="RemoveMessageBphone()" onchange="ValidateMobile()" name="BUSINESSPHONE" onkeyup="ValidateMobile()" required="">
                                                             <div id="validmobile"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="OPTIONALPHONE">Optional Number</label>
-                                                            <input asp-for="OPTIONALPHONE" type="text" class="optionalphone form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" onkeyup="ValidatePhone()" name="OPTIONALPHONE">
+                                                            <input asp-for="OPTIONALPHONE" type="text" class="optionalphone form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" oninput="RemoveMessageOphone()" onchange="ValidatePhone()" onkeyup="ValidatePhone()" name="OPTIONALPHONE">
                                                             <div id="validoptionalmobile"></div>
                                                         </div>
                                                     </div>
@@ -157,7 +176,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label asp-for="MEMBERSHIPPLAN">Primary Business</label>
+                                                            <label asp-for="MEMBERSHIPPLAN">Membership Plan</label>
                                                             <span class="red-star">*</span>
                                                             <select name="MEMBERSHIPPLAN" id="MEMBERSHIPPLAN" class="form-control" required="" name="MEMBERSHIPPLAN">
                                                                 <option value="" disabled="" selected=true>Choose Your Plan</option>
@@ -171,7 +190,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="checkbox">
-                                                            <label><input type="checkbox" required=""> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
+                                                            <label><input id="chkAgreeId" type="checkbox" required=""> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,9 +198,9 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-btns">
-                                                            <button class="btn btn-default" id="btnGet" />
+                                                            <button class="btn btn-default" id="btnGet" onclick="finalregistaton()" />
                                                             Submit</i>
-                                                            <button class="btn btn-default resetbtn" type="reset">Reset</i>
+                                                            <button type="reset" class="btn btn-default resetbtn" onclick="ResetSecondRegistration()">Reset</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -269,7 +288,7 @@
     </div>
 </body>
 </html>
-   <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
 <script src="~/js/userdetails.js"></script>
 

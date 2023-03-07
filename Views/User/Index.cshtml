@@ -28,7 +28,6 @@
         <div class="main-wrapper">
             <!--Header Top Menu-->
             <div class="main-naivgation">
-                
             </div>
             <!--End Header Top Menu-->
             <!--Registration Form-->
@@ -44,19 +43,18 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        
+                                                            <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Message</label>
                                         <div class="reg-forms">
                                             <h2 class="main-heading-content">Sign Up</h2>
-                                            <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Message</label>
-
                                             <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
-                                            <form id="FormID" action="" name="Form" method="post">
+                                            @* <form id="FormID" action="" name="Form" method="post">*@
+                                            <form id="FormID" name="FormID" method="post" onsubmit="event.preventDefault();">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label asp-for="FIRSTNAME">First Name</label> 
+                                                            <label asp-for="FIRSTNAME">First Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME">
+                                                            <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" id="FIRSTNAME" name="FIRSTNAME" oninput="ValidateFname()" onchange="ValidateFname()" required="">
 
                                                         </div>
                                                     </div>
@@ -64,7 +62,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="LASTNAME">Last Name</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" id="LASTNAME" name="LASTNAME">
+                                                            <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" id="LASTNAME" name="LASTNAME" oninput="ValidateLname()" onchange="ValidateLname()" required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -73,15 +71,14 @@
                                                         <div class="form-group">
                                                             <label asp-for="EMAILID">Email</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID">
-                                                            @*<div id="validateemail"></div>*@
+                                                            <input asp-for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID" oninput="ValidateEmail()" onchange="ValidateEmail()" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="CONFIRMEMAIL">Confirm Email</label>
-                                                             <span class="red-star">*</span>
-                                                            <input for="CONFIRMEMAIL" class="form-control" placeholder="" id="CONFIRMEMAIL" name="CONFIRMEMAIL">
+                                                            <span class="red-star">*</span>
+                                                            <input for="CONFIRMEMAIL" class="form-control" placeholder="" id="CONFIRMEMAIL" name="CONFIRMEMAIL" oninput="ValidateConfirmEmail()" onchange="ValidateConfirmEmail()" required="">
                                                             <div id="showerrorEmail"></div>
                                                         </div>
                                                     </div>
@@ -92,14 +89,14 @@
                                                         <div class="form-group">
                                                             <label asp-for="PASSWORD">Password</label>
                                                             <span class="red-star">*</span>
-                                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD">
+                                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD" oninput="ValidatePassword()" onchange="ValidatePassword()" required="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="CONFIRMPASSWORD">Confirm Password</label>
                                                             <span class="red-star">*</span>
-                                                            <input for="CONFIRMPASSWORD" type="password" class="form-control" placeholder="" id="CONFIRMPASSWORD" name="CONFIRMPASSWORD">
+                                                            <input for="CONFIRMPASSWORD" type="password" class="form-control" placeholder="" id="CONFIRMPASSWORD" name="CONFIRMPASSWORD()" oninput="ValidateConfirmPassword" onchange="ValidateConfirmPassword()" required="">
                                                             <div id="showerror"></div>
                                                         </div>
                                                     </div>
@@ -109,7 +106,7 @@
                                                         <div class="form-group">
                                                             <label asp-for="USERTYPE">Primary Business</label>
                                                             <span class="red-star">*</span>
-                                                            <select name="USERTYPE" id="USERTYPE" class="form-control">
+                                                            <select name="USERTYPE" id="USERTYPE" class="form-control" onchange="ValidateUserType()" required="">
                                                                 <option value="" disabled="" selected=true>Choose Option</option>
                                                                 <option value="2">Buyer</option>
                                                                 <option value="1">Seller</option>
@@ -132,7 +129,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="checkbox">
-                                                            <label><input type="checkbox" required=""> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
+                                                            <label><input type="checkbox" id="CHKTERM" name="CHKTERM" required="" onclick="ValidateCheckTerm()"> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,111 +137,111 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-btns">
-                                                            <button class="btn btn-default" onclick="CreateUser()" />
+                                                            <button class="btn btn-default" onclick="CreateUser()" id="btnSubmit" />
                                                             Submit</i>
-                                                            <button class="btn btn-default resetbtn" type="reset">Reset</i>
+                                                            <button class="btn btn-default resetbtn" type="reset" onclick="ResetFirstRegistration()" />Reset</i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                </button>
+                                                @* </button>*@
                                             </form>
-                                            
+
                                             @*
-                                            
+
                                             <form action="">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email">First Name</label>
-                                                            <input type="text" class="form-control" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email">Last Name</label>
-                                                            <input type="text" class="form-control" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label for="email">First Name</label>
+                                            <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label for="email">Last Name</label>
+                                            <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            </div>
+                                            </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email">Email</label>
-                                                            <input type="text" class="form-control" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email">Confirm Email</label>
-                                                            <input type="text" class="form-control" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label for="email">Confirm Email</label>
+                                            <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            </div>
+                                            </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email">Password</label>
-                                                            <input type="text" class="form-control" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="email">Confirm Password</label>
-                                                            <input type="text" class="form-control" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label for="email">Password</label>
+                                            <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label for="email">Confirm Password</label>
+                                            <input type="text" class="form-control" placeholder="">
+                                            </div>
+                                            </div>
+                                            </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="email">Primary Business</label>
-                                                            <select name="" id="" class="form-control">
-                                                                <option value="" disabled="" selected="">Choose Option</option>
-                                                                <option value="class 01">Brewery</option>
-                                                                <option value="class 02">Bar</option>
-                                                                <option value="class 03">Restaurant</option>
-                                                                <option value="class 04">Retailer</option>
-                                                                <option value="class 05">Venue</option>
-                                                                <option value="class 06">Event Promoter</option>
-                                                                <option value="class 07">Hotel</option>
-                                                                <option value="class 08">Caterer</option>
-                                                                <option value="class 09">Membership Club</option>
-                                                                <option value="class 10">Rail Line</option>
-                                                                <option value="class 11">Airline</option>
-                                                                <option value="class 12">Boat</option>
-                                                                <option value="class 13">Corporate HQ</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-12">
+                                            <div class="form-group">
+                                            <label for="email">Primary Business</label>
+                                            <select name="" id="" class="form-control">
+                                            <option value="" disabled="" selected="">Choose Option</option>
+                                            <option value="class 01">Brewery</option>
+                                            <option value="class 02">Bar</option>
+                                            <option value="class 03">Restaurant</option>
+                                            <option value="class 04">Retailer</option>
+                                            <option value="class 05">Venue</option>
+                                            <option value="class 06">Event Promoter</option>
+                                            <option value="class 07">Hotel</option>
+                                            <option value="class 08">Caterer</option>
+                                            <option value="class 09">Membership Club</option>
+                                            <option value="class 10">Rail Line</option>
+                                            <option value="class 11">Airline</option>
+                                            <option value="class 12">Boat</option>
+                                            <option value="class 13">Corporate HQ</option>
+                                            </select>
+                                            </div>
+                                            </div>
+                                            </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="checkbox">
-                                                            <label><input type="checkbox"> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-12">
+                                            <div class="checkbox">
+                                            <label><input type="checkbox"> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
+                                            </div>
+                                            </div>
+                                            </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-btns">
-                                                            <button class="btn btn-default">Submit</button>
-                                                            <button class="btn btn-default resetbtn">Reset</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="row">
+                                            <div class="col-md-12">
+                                            <div class="form-btns">
+                                            <button class="btn btn-default">Submit</button>
+                                            <button class="btn btn-default resetbtn">Reset</button>
+                                            </div>
+                                            </div>
+                                            </div>
                                             </form>
-                                    
-                                        *@
-                                        
+
+                                            *@
+
                                         </div>
-                                    
-                                    
-                                    
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -324,7 +321,7 @@
             </section>
         </div>
     </div>
- 
+
 </body>
 
 </html>
