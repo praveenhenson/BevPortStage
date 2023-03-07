@@ -239,36 +239,37 @@
 
 
             <section class="footer">
-                <div class="container" style="padding-left:0px">
+                <div class="container">
                     <div class="row">
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About Us</a></li>
+
+
+                                <li><a href="@Url.Action("index","Home")">Home</a></li>
+                                <li><a href="@Url.Action("aboutus","Home")">About Us</a></li>
                                 <li><a href="#">Services</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Trending</h2>
                             <ul>
-                                <li><a href="#">Sellers</a></li>
-                                <li><a href="#">Buyers</a></li>
-                                <li><a href="#">Membership</a></li>
+                                <li><a href="@Url.Action("seller","Home")">Sellers</a></li>
+                                <li><a href="@Url.Action("buyer","Home")">Buyers</a></li>
+                                <li><a href="@Url.Action("membershipplan","Home")">Membership</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <ul>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
                                 <li><a href="#">Career</a></li>
-                                <li><a href="#">Blog</a></li>
                             </ul>
                         </div>
                         <div class="col-md-3">
                             <h2 class="footer-heading">Quick Links</h2>
                             <p><a href="#">800 XXXX XXX</a></p>
-                            <p><a href="#">support@bevport.com</a></p>
+                            <p><a mailto:href="#">support@bevport.com</a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -293,6 +294,7 @@
                     </div>
                 </div>
             </section>
+
             <section class="ftr-copyright">
                 <div class="container">
                     <div class="row">
