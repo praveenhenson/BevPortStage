@@ -297,28 +297,20 @@ function CreateUser() {
         //alert("testme");
         return false;
     }
-    //NEW
-    //FName = $("#FIRSTNAME").val();
-    //LName = $('#LASTNAME').val();
-    //Email = $('#EMAILID').val();
-    //Password = $('#PASSWORD').val();
-    //UserType = $('#USERTYPE').val();
-    //var data = {
-    //    FIRSTNAME: FName,
-    //    LASTNAME: LName,
-    //    EMAILID: Email,
-    //    PASSWORD:Password,
-    //    USERTYPE: UserType,
-    //};
+    FName = $("#FIRSTNAME").val();
+    LName = $('#LASTNAME').val();
+    Email = $('#EMAILID').val();
+    Password = $('#PASSWORD').val();
+    UserType = $('#USERTYPE').val();
+    var data = {
+        FIRSTNAME: FName,
+        LASTNAME: LName,
+        EMAILID: Email,
+        PASSWORD:Password,
+        USERTYPE: UserType,
+    };
 
-    var fileData = new FormData();
-    fileData.append('FIRSTNAME', $("#FIRSTNAME").val());
-    fileData.append('LASTNAME', $("#LASTNAME").val());
-    fileData.append('EMAILID', $("#EMAILID").val());
-    fileData.append('PASSWORD', $("#PASSWORD").val());
-    fileData.append('USERTYPE', $("#USERTYPE").val());
-
-    debugger;
+   
     var Controller = "User";
     var Action = "Index";
     var URL = "/" + Controller + "/" + Action;
@@ -327,12 +319,8 @@ function CreateUser() {
         type: "POST",
         url: URL,
         dataType: 'json',
-        //contentType: 'application/json; charset=utf-8',
-        //traditional: true,
-        //data: JSON.stringify(data),
-        contentType: false,
-        processData: false,
-        data: fileData,
+        contentType: "application/x-www-form-urlencoded",
+        data: data,
         success: function (response) {
             debugger;
             //alert("A1");

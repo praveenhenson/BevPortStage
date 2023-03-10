@@ -125,22 +125,16 @@ function SaveContactUs() { //new
         return;
     }
 
-    //FName = $("#FIRSTNAME").val();
-    //LName = $('#LASTNAME').val();
-    //Email = $('#EMAILID').val();
-    //Content = $('#Content').val();
-    //var data = {
-    //    FIRSTNAME: FName,
-    //    LASTNAME: LName,
-    //    EMAILID: Email,
-    //    Content: Content,
-    //};
-    var fileData = new FormData();
-    fileData.append('FIRSTNAME', $("#FIRSTNAME").val());
-    fileData.append('LASTNAME', $("#LASTNAME").val());
-    fileData.append('EMAILID', $("#EMAILID").val());
-    fileData.append('Content', $("#Content").val());
-    
+    FName = $("#FIRSTNAME").val();
+    LName = $('#LASTNAME').val();
+    Email = $('#EMAILID').val();
+    Content = $('#Content').val();
+    var data = {
+        FIRSTNAME: FName,
+        LASTNAME: LName,
+        EMAILID: Email,
+        Content: Content,
+    };
     var Controller = "Home";
     var Action = "ContactUs";
     var URL = "/" + Controller + "/" + Action;
@@ -151,9 +145,8 @@ function SaveContactUs() { //new
         type: "POST",
         url: URL,
         dataType: 'json',
-        contentType: false,
-        processData: false,
-        data: fileData,
+        contentType: "application/x-www-form-urlencoded",
+        data: data,
         success: function (response) {
             debugger;
             if (response != null) {

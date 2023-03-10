@@ -1,8 +1,4 @@
-﻿
-
-
-
-function ValidateMobile() {
+﻿function ValidateMobile() {
     var BUSINESSPHONE = document.getElementById('BUSINESSPHONE').value;
     if (BUSINESSPHONE != "") {
         $('.phone').inputmask('(999)-999-9999');
@@ -178,15 +174,25 @@ function finalregistaton() {
         return;
     }
 
-    var fileData = new FormData();
-    fileData.append('BUSINESSNAME', $("#BUSINESSNAME").val());
-    fileData.append('EIN', $("#EIN").val());
-    fileData.append('STATETAXNO', $("#STATETAXNO").val());
-    fileData.append('STREETADD', $("#STREETADD").val());
-    fileData.append('STREETADD2', $("#STREETADD2").val());
-    fileData.append('BUSINESSPHONE', $("#BUSINESSPHONE").val());
-    fileData.append('OPTIONALPHONE', $("#OPTIONALPHONE").val());
-    fileData.append('MEMBERSHIPPLAN', $("#MEMBERSHIPPLAN").val());
+    
+    BName = $("#BUSINESSNAME").val();
+    EIN = $('#EIN').val();
+    StateTax = $('#STATETAXNO').val();
+    StreetAdd = $('#STREETADD').val();
+    StreetAdd2 = $('#STREETADD2').val();
+    BusinessPhone = $('#BUSINESSPHONE').val();
+    OptionalPhone = $('#OPTIONALPHONE').val();
+    MembershipPlan = $('#MEMBERSHIPPLAN').val();
+    var data = {
+        BUSINESSNAME: BName,
+        EIN: EIN,
+        STATETAXNO: StateTax,
+        STREETADD: StreetAdd,
+        STREETADD2: StreetAdd2,
+        BUSINESSPHONE: BusinessPhone,
+        OPTIONALPHONE: OptionalPhone,
+        MEMBERSHIPPLAN: MembershipPlan,
+    };
 
     debugger;
     var Controller = "User";
@@ -197,9 +203,8 @@ function finalregistaton() {
         type: "POST",
         url: URL,
         dataType: 'json',
-        contentType: false,
-        processData: false,
-        data: fileData,
+        contentType: "application/x-www-form-urlencoded",
+        data: data,
         success: function (response) {
             debugger;
             alert("Registration Successful.");

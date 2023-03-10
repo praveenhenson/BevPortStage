@@ -51,7 +51,6 @@ namespace BevPort.Controllers
         {
             try
             {
-
                 var senderEmail = new MailAddress("hellobevport@gmail.com", "BevPort");
                 var receiverEmail = new MailAddress(receiver, "Receiver");
                 var password = "brerjdkbtphvxnjt";
@@ -63,9 +62,7 @@ namespace BevPort.Controllers
                     UseDefaultCredentials = false,
                     Host = "smtp.gmail.com",
                     Port = 587,
-
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-
                     Credentials = new NetworkCredential(senderEmail.Address, password)
                 };
                 using (var mess = new MailMessage(senderEmail, receiverEmail)
@@ -85,6 +82,8 @@ namespace BevPort.Controllers
             }
             return View();
         }
+       
+        
         public IActionResult aboutus()
         {
             return View();

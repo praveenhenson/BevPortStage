@@ -153,6 +153,22 @@
       "PackagePath": "staticwebassets\\images\\testimonial-backgournd.jpg"
     },
     {
+      "Id": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\js\\Common\\Helper.js",
+      "PackagePath": "staticwebassets\\js\\Common\\Helper.js"
+    },
+    {
+      "Id": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\js\\Pages\\ContactUs.js",
+      "PackagePath": "staticwebassets\\js\\Pages\\ContactUs.js"
+    },
+    {
+      "Id": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\js\\Pages\\ForgetPassword.js",
+      "PackagePath": "staticwebassets\\js\\Pages\\ForgetPassword.js"
+    },
+    {
+      "Id": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\js\\Pages\\ResetPassword.js",
+      "PackagePath": "staticwebassets\\js\\Pages\\ResetPassword.js"
+    },
+    {
       "Id": "D:\\HIMANSHU MISHRA\\Bev Port Project\\GitHub\\Dev\\Bev Port\\wwwroot\\js\\Registration.js",
       "PackagePath": "staticwebassets\\js\\Registration.js"
     },

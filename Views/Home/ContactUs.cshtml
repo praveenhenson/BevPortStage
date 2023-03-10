@@ -3,10 +3,6 @@
     ViewData["Title"] = "ContactUs";
     Layout = "~/Views/Default/DefaultLayout.cshtml";
 }   <!--End Header Top Menu-->
-<!DOCTYPE html>
-<html lang="en">
-
-<body>
     <div class="site-wrapper">
         <div class="main-wrapper">
             <!--Header Top Menu-->
@@ -50,7 +46,6 @@
                                 <h2 class="inner-main-heading-content">Drop Us a Line</h2>
                                 <p class="content-para">Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
                                 @Html.ValidationSummary(true)
-                                <form name="contact" method="post" name="Form" onsubmit="event.preventDefault();">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -117,7 +112,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -198,9 +192,4 @@
     </div>
 
 
-
-    @*   <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>*@
-</body>
-</html>
-
+<script src="~/js/pages/contactus.js"></script>

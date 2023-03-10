@@ -1,0 +1,147 @@
+﻿@model BevPort.Models.Users
+<section class="registration-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="image-holder">
+                                <img src="~/images/registration-form-6.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="reg-forms">
+                                <h2 class="main-heading-content">Login</h2>
+                                <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
+                                @* <form id="FormID" action="" name="Form" method="post">*@
+
+                                <label style="color:red">@ViewBag.ErrorMessage</label>
+                                <form method="post" action="/User/Login">
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label asp-for="EMAILID">Email</label>
+                                                <span class="red-star">*</span>
+                                                <input for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID" oninput="ValidateEmail()" onchange="ValidateEmail()" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label asp-for="PASSWORD">Password</label>
+                                                <span class="red-star">*</span>
+                                                <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD" oninput="ValidatePassword()" onchange="ValidatePassword()" required="">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12" style="align-items:center">
+                                            <div class="form-btns" style="padding-left:150px">
+                                                <button type="submit" class="btn btn-default" />
+                                                Login</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div>
+                                            <a href="@Url.Action("Index","User")" style="padding-left:20px">Register</a>
+                                            <a href="@Url.Action("ForgetPassword","User")" style="padding-left:260px">Forgot Password ?</a>
+                                        </div>
+
+                                    </div>
+
+
+                                </form>
+
+                                @*
+
+                                *@
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--End Registration Form-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h2 class="footer-heading">Quick Links</h2>
+                <ul>
+
+
+                    <li><a href="@Url.Action("index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("aboutus","Home")">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h2 class="footer-heading">Trending</h2>
+                <ul>
+                    <li><a href="@Url.Action("seller","Home")">Sellers</a></li>
+                    <li><a href="@Url.Action("buyer","Home")">Buyers</a></li>
+                    <li><a href="@Url.Action("membershipplan","Home")">Membership</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h2 class="footer-heading">Quick Links</h2>
+                <ul>
+                    <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h2 class="footer-heading">Quick Links</h2>
+                <p><a href="#">800 XXXX XXX</a></p>
+                <p><a href="#">support@bevport.com</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="newsletter">
+                    <h2 class="elementor-heading-title">BevPort Newsletter</h2>
+                    <p>Be the first to know about our new arrivals and exclusive offers.</p>
+                    <div class="newsletter-form">
+                        <form name="sds">
+                            <div class="mc4wp-form-fields">
+                                <div class="mc_merge_var">
+                                    <input type="email" name="EMAIL" placeholder="Email Address" required="">
+                                </div>
+                                <div class="mc_signup_submit">
+                                    <input type="submit" value="Sign up">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function Hello() {
+
+        swal("Success!", "Successfully Deleted Data!", "success");
+    }
+</script>

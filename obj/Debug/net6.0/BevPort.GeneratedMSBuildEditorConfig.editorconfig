@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\HIMANSHU MISHRA\Bev Port Project\GitHub\Dev\Bev Port
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/Default/DefaultLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdFxEZWZhdWx0TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/Home/AboutUs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,12 +56,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/User/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxGb3JnZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/User/Homepage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxIb21lcGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/User/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/User/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HIMANSHU MISHRA/Bev Port Project/GitHub/Dev/Bev Port/Views/_ViewImports.cshtml]

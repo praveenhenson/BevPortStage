@@ -11,7 +11,7 @@ namespace BevPort.Models
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Invalid Email Address.")]
         public string? EMAILID { get; set; }
-        public string? USERTYPE { get; set; }
+        public int USERTYPE { get; set; }
         public string? PASSWORD { get; set; }
     }
 }
