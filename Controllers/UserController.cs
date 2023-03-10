@@ -303,8 +303,6 @@ namespace BevPort.Controllers
                 using (var client = new HttpClient())
                 {
                     {
-
-
                         client.BaseAddress = new Uri("https://bevportfunctions20230303194850.azurewebsites.net/");
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         HttpResponseMessage response = new HttpResponseMessage();
@@ -323,7 +321,7 @@ namespace BevPort.Controllers
                             }
                             else
                             {
-                                ViewBag.ErrorMessage = "Invalid Email ID/Password";
+                                ViewBag.Message = "Invalid Email ID/Password";
                                 return View();
                             }
                         }
