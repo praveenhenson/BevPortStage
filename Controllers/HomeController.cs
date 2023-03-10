@@ -51,9 +51,11 @@ namespace BevPort.Controllers
         {
             try
             {
-                var senderEmail = new MailAddress("hellobevport@gmail.com", "BevPort");
+                var senderEmail = new MailAddress("mcaashu214@gmail.com", "BevPort");
+               // var senderEmail = new MailAddress("hellobevport@gmail.com", "BevPort");
                 var receiverEmail = new MailAddress(receiver, "Receiver");
-                var password = "brerjdkbtphvxnjt";
+                var password = "xelntkafoavtckfk";
+                // var password = "brerjdkbtphvxnjt";
                 var sub = subject;
                 var body = message;
                 var smtp = new SmtpClient
