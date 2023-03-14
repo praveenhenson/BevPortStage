@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="~/images/logo.png"/>
-    @*<img src="~/images/logo.png" />*@
+    <link rel="icon" href="~/images/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,84 +18,129 @@
 <body>
     <div class="site-wrapper">
         <div class="main-wrapper">
-    <header>
-        <!--Header Top Menu-->
-        <div class="main-naivgation">
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                                <a class="navbar-brand" href="#" onclick="location.href='@Url.Action("index", "Home")'">
+            <header>
+                <!--Header Top Menu-->
+                <div class="main-naivgation">
+                    <nav class="navbar navbar-default">
+                        <div class="container">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#" onclick="location.href='@Url.Action("Index", "Home")'">
                                     <img alt="Brand" src="~/images/logo.png">
-                        </a>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
+                                </a>
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse main-menu-nav" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav main-menu-navigation">
-                            @*<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Selling</a></li>
-                            <li><a href="#">Buying</a></li>
-                            <li><a href="#">Membership</a></li>
-                            <li><a href="#">Contact Us</a></li>*@
-                            <li>
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse main-menu-nav" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav main-menu-navigation">
+                                    <li>
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="aboutUs">About Us</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
                                     </li>
-                                    <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="seller">Selling</a></li>
-                                    <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="buyer">Buying</a></li>
-                                    <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="membershipplan">Membership</a></li>
+                                    <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Seller">Selling</a></li>
+                                    <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Buyer">Buying</a></li>
+                                    <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="MembershipPlan">Membership</a></li>
                                     <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a></li>
-                            <!-- <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                              </ul>
-                            </li> -->
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <div class="right-call-btn">
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <div class="right-call-btn">
                                         <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                                @*<a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>*@
-                            </div>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-        </div>
-        <!--End Header Top Menu-->
-    </header>
-    <div class="container-fluid" style="padding-left:0px;padding-right:0px">
-        @RenderBody()
-    </div>
+                                    </div>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                </div>
+                <!--End Header Top Menu-->
+            </header>
+            <div class="container-fluid" style="padding-left:0px;padding-right:0px">
+                @RenderBody()
+            </div>
+            <div>
+                <section class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h2 class="footer-heading">Quick Links</h2>
+                                <ul>
 
-    @* <footer class="border-top footer text-muted">
-    <div class="container">
-    &copy; 2023 - BevPort - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-    </footer>*@
+
+                                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                                    <li><a href="@Url.Action("AboutUs","Home")">About Us</a></li>
+                                    <li><a href="#">Services</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h2 class="footer-heading">Trending</h2>
+                                <ul>
+                                    <li><a href="@Url.Action("Seller","Home")">Sellers</a></li>
+                                    <li><a href="@Url.Action("Buyer","Home")">Buyers</a></li>
+                                    <li><a href="@Url.Action("MembershipPlan","Home")">Membership</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h2 class="footer-heading">Quick Links</h2>
+                                <ul>
+                                    <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
+                                    <li><a href="#">Career</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h2 class="footer-heading">Quick Links</h2>
+                                <p><a href="#">800 XXXX XXX</a></p>
+                                <p><a href="#">support@bevport.com</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="newsletter">
+                                    <h2 class="elementor-heading-title">BevPort Newsletter</h2>
+                                    <p>Be the first to know about our new arrivals and exclusive offers.</p>
+                                    <div class="newsletter-form">
+                                        <form name="sds">
+                                            <div class="mc4wp-form-fields">
+                                                <div class="mc_merge_var">
+                                                    <input type="email" name="EMAIL" placeholder="Email Address" required="">
+                                                </div>
+                                                <div class="mc_signup_submit">
+                                                    <input type="submit" value="Sign up">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cover-spin"></div>
+
+                </section>
+                <section class="ftr-copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyrights &copy; 2023 All Rights Reserved by BevPort.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
             <script src="~/js/jquery.min.js"></script>
             <script src="~/js/bootstrap.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
-            @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>*@
-    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
-    @await RenderSectionAsync("Scripts", required: false)
-    </div>
+            @await RenderSectionAsync("Scripts", required: false)
+        </div>
     </div>
 </body>
 

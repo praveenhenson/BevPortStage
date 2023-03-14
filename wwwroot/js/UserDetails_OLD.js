@@ -74,7 +74,7 @@ function ValidateExpiryDate() {
 
 
 function finalregistaton() {
-    //debugger;
+    debugger;
     var chkflag = false;
 
     $("#divbusiname").remove();
@@ -89,7 +89,7 @@ function finalregistaton() {
 
     if ($("#BUSINESSNAME").val() == "") {
         $("#divbusiname").remove();
-        $("#BUSINESSNAME").parent().after("<div id='divbusiname' class='error-message'>Please enter Business Name.</div>");
+        $("#BUSINESSNAME").parent().after("<div id='divbusiname' style='color:red;margin-bottom: 5px;size:1px'>Please enter Business Name.</div>");
         chkflag = true;
     }
     else {
@@ -99,7 +99,7 @@ function finalregistaton() {
 
     if ($("#EIN").val() == "") {
         $("#divein").remove();
-        $("#EIN").parent().after("<div id='divein' class='error-message'>Please enter Employer Identification Number</div>");
+        $("#EIN").parent().after("<div id='divein' style='color:red;margin-bottom: 5px;'>Please enter Employer Identification Number</div>");
         chkflag = true;
     }
     else {
@@ -109,7 +109,7 @@ function finalregistaton() {
 
     if ($("#STREETADD").val() == "") {
         $("#divstreet2").remove();
-        $("#STREETADD").parent().after("<div id='divstreet2' class='error-message'>Please enter Address</div>");
+        $("#STREETADD").parent().after("<div id='divstreet2' style='color:red;margin-bottom: 5px;'>Please enter Address</div>");
         chkflag = true;
     }
     else {
@@ -120,7 +120,7 @@ function finalregistaton() {
 
     if ($("#STREETADD2").val() == "") {
         $("#divst").remove();
-        $("#STREETADD2").parent().after("<div id='divst' class='error-message'>Please enter Address</div>");
+        $("#STREETADD2").parent().after("<div id='divst' style='color:red;margin-bottom: 5px;'>Please enter Address</div>");
         chkflag = true;
     }
     else {
@@ -131,7 +131,7 @@ function finalregistaton() {
 
     if ($("#STATETAXNO").val() == "") {
         $("#divtaxno").remove();
-        $("#STATETAXNO").parent().after("<div id='divtaxno' class='error-message'>Please enter State Tax Number</div>");
+        $("#STATETAXNO").parent().after("<div id='divtaxno' style='color:red;margin-bottom:5px;'>Please enter State Tax Number</div>");
         chkflag = true;
     }
     else {
@@ -142,7 +142,7 @@ function finalregistaton() {
 
     if ($("#ZipCode").val() == "") {
         $("#divzip").remove();
-        $("#ZipCode").parent().after("<div id='divzip' class='error-message'>Please enter ZipCode</div>");
+        $("#ZipCode").parent().after("<div id='divzip' style='color:red;margin-bottom:5px;'>Please enter ZipCode</div>");
         chkflag = true;
     }
     else {
@@ -153,7 +153,7 @@ function finalregistaton() {
 
     if ($("#OPTIONALPHONE").val() == "") {
         $("#divopt").remove();
-        $("#OPTIONALPHONE").parent().after("<div id='divopt' class='error-message'>Please enter Optional Number.</div>");
+        $("#OPTIONALPHONE").parent().after("<div id='divopt' style='color:red;margin-bottom:5px;'>Please enter Optional Number.</div>");
         chkflag = true;
     }
     else {
@@ -163,7 +163,7 @@ function finalregistaton() {
 
     if ($("#BUSINESSPHONE").val() == "") {
         $("#divmob").remove();
-        $("#BUSINESSPHONE").parent().after("<div id='divmob' class='error-message'>Please enter Business Number</div>");
+        $("#BUSINESSPHONE").parent().after("<div id='divmob' style='color:red;margin-bottom:5px;'>Please enter Business Number</div>");
         chkflag = true;
     }
     else {
@@ -194,7 +194,7 @@ function finalregistaton() {
         MEMBERSHIPPLAN: MembershipPlan,
     };
 
-    //debugger;
+    debugger;
     var Controller = "User";
     var Action = "Registration";
     var URL = "/" + Controller + "/" + Action;
@@ -205,55 +205,31 @@ function finalregistaton() {
         dataType: 'json',
         contentType: "application/x-www-form-urlencoded",
         data: data,
-
         success: function (response) {
-            //debugger;
+            debugger;
+            alert("Registration Successful.");
             if (response != null) {
-                //debugger;
-                var arrayValues = Object.values(response);
-                if (arrayValues[0] == "fail") {
-                    alert(arrayValues[1]);
-                    window.location.href = "/User/Registration";
-                    //swal("Error", "Email already exist.", "error");                          
-                }
-                else {
-                    alert(arrayValues[1]);
-                    window.location.href = "/User/Registration";
-                    ResetSecondRegistration();
-                }
+                //ResetFields();
+                //window.location.href = "/User/Registration";
             } else {
-                //debugger;
-                alert("Error Occured. Please contact Administrator.");
-                window.location.href = "/User/Registration";
+                alert("Registration Successful.");
+                //window.location.href = "/User/Registration";
                 //alert("Something went wrong");
+                //ResetFields();
             }
+        },
+        failure: function (response) {
+            alert("Registration Successful.");
+            //window.location.href = "/User/Registration";
+            //alert(response.responseText);
+            //ResetFields();
+        },
+        error: function (response) {
+            alert("Registration Successful.");
+            //window.location.href = "/User/Registration";
+            //alert(response.responseText);
+            // ResetFields();
         }
-
-        //success: function (response) {
-        //    debugger;
-        //    alert("Registration Successful.");
-        //    if (response != null) {
-        //        //ResetFields();
-        //        //window.location.href = "/User/Registration";
-        //    } else {
-        //        alert("Registration Successful.");
-        //        //window.location.href = "/User/Registration";
-        //        //alert("Something went wrong");
-        //        //ResetFields();
-        //    }
-        //},
-        //failure: function (response) {
-        //    alert("Registration Successful.");
-        //    //window.location.href = "/User/Registration";
-        //    //alert(response.responseText);
-        //    //ResetFields();
-        //},
-        //error: function (response) {
-        //    alert("Registration Successful.");
-        //    //window.location.href = "/User/Registration";
-        //    //alert(response.responseText);
-        //    // ResetFields();
-        //}
     });
 
 

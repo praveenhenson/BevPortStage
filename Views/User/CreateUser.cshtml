@@ -22,11 +22,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                    <label for="Message" class="error-message">@ViewBag.Message</label>
                                         <div class="reg-forms">
                                             <h2 class="main-heading-content">Sign Up</h2>
                                             <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
-                                        @*<form id="FormID" action="" name="Form" method="post" onsubmit="event.preventDefault();">*@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -88,44 +86,20 @@
                                                                 <option value="" disabled="" selected=true>Choose Option</option>
                                                                 <option value="2">Buyer</option>
                                                                 <option value="1">Seller</option>
-                                                                @*<option value="class 03">Restaurant</option>
-                                                                <option value="class 04">Retailer</option>
-                                                                <option value="class 05">Venue</option>
-                                                                <option value="class 06">Event Promoter</option>
-                                                                <option value="class 07">Hotel</option>
-                                                                <option value="class 08">Caterer</option>
-                                                                <option value="class 09">Membership Club</option>
-                                                                <option value="class 10">Rail Line</option>
-                                                                <option value="class 11">Airline</option>
-                                                                <option value="class 12">Boat</option>
-                                                                <option value="class 13">Corporate HQ</option>*@
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="checkbox">
-                                                            <label><input type="checkbox" id="CHKTERM" name="CHKTERM" required="" onclick="ValidateCheckTerm()"> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-btns">
                                                             <button class="btn btn-default" onclick="CreateUser()" id="btnSubmit" />
-                                                            Submit</i>
-                                                            <button class="btn btn-default resetbtn" type="reset" onclick="ResetFirstRegistration()" />Reset</i>
+                                                            Next</i>
+                                                    <button class="btn btn-default resetbtn" type="reset" onclick="ResetCreateUser()" />Reset</i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                               @*</form>*@
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -134,80 +108,8 @@
                     </div>
                 </div>
             </section>
-
-
-
-            <section class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Quick Links</h2>
-                            <ul>
-
-
-                                <li><a href="@Url.Action("index","Home")">Home</a></li>
-                                <li><a href="@Url.Action("aboutus","Home")">About Us</a></li>
-                                <li><a href="#">Services</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Trending</h2>
-                            <ul>
-                                <li><a href="@Url.Action("seller","Home")">Sellers</a></li>
-                                <li><a href="@Url.Action("buyer","Home")">Buyers</a></li>
-                                <li><a href="@Url.Action("membershipplan","Home")">Membership</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Quick Links</h2>
-                            <ul>
-                                <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
-                                <li><a href="#">Career</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Quick Links</h2>
-                            <p><a href="#">800 XXXX XXX</a></p>
-                            <p><a mailto:href="#">support@bevport.com</a></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="newsletter">
-                                <h2 class="elementor-heading-title">BevPort Newsletter</h2>
-                                <p>Be the first to know about our new arrivals and exclusive offers.</p>
-                                <div class="newsletter-form">
-                                    <form name="sds">
-                                        <div class="mc4wp-form-fields">
-                                            <div class="mc_merge_var">
-                                                <input type="email" name="EMAIL" placeholder="Email Address" required="">
-                                            </div>
-                                            <div class="mc_signup_submit">
-                                                <input type="submit" value="Sign up">
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="ftr-copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyrights &copy; 2023 All Rights Reserved by BevPort.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<script src="~/js/user.js"></script>
+<script src="~/js/pages/user.js"></script>

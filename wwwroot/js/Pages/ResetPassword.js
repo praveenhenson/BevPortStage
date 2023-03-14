@@ -22,13 +22,13 @@ function ValidateEmail() {
 
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); 
-        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
+        $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter Email.</div>");
         chkEmailflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
+            $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
             chkEmailflag = true;
         }
         else {
@@ -47,13 +47,13 @@ function ValidatePassword() {
     var chkPassflag = false;
     if ($("#PASSWORD").val() == "") {
         $("#divpass").remove();
-        $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter Password.</div>");
+        $("#PASSWORD").parent().after("<div id='divpass' class='error-message'>Please enter Password.</div>");
         chkPassflag = true;
     }
     else {
         $("#divpass").remove();
         if (!($("#PASSWORD").val().match(validPassRegex))) {
-            $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
+            $("#PASSWORD").parent().after("<div id='divpass' class='error-message'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
             chkPassflag = true;
         }
         else {
@@ -72,11 +72,11 @@ function ValidateConfirmPassword() {
     $("#divcpass").remove();
     if ($("#CONFIRMPASSWORD").val() == "") {
         $("#divcpass").remove();
-        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' style='color:red;margin-bottom: 20px;'>Please enter Confirm Password.</div>");
+        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' class='error-message'>Please enter Confirm Password.</div>");
         chkCPwdflag = true;
     }
     else if ($('#CONFIRMPASSWORD').val() != $('#PASSWORD').val()) {
-        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' style='color:red;margin-bottom: 20px;'>Password Not Matched.</div>");
+        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' class='error-message'>Password Not Matched.</div>");
         chkCPwdflag = true;
     }
     else {
@@ -101,13 +101,13 @@ function ResetPassword() {
 
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); // remove it
-        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'> Email cannot be blank.</div>");
+        $("#EMAILID").parent().after("<div id='divemail' class='error-message'> Email cannot be blank.</div>");
         chkflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Invalid Email.</div>");
+            $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Invalid Email.</div>");
             chkflag = true;
         }
         else {
@@ -116,13 +116,13 @@ function ResetPassword() {
     }
     if ($("#PASSWORD").val() == "") {
         $("#divpass").remove();
-        $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter Password.</div>");
+        $("#PASSWORD").parent().after("<div id='divpass' class='error-message'>Please enter Password.</div>");
         chkflag = true;
     }
     else {
         $("#divpass").remove();
         if (!($("#PASSWORD").val().match(validPassRegex))) {
-            $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
+            $("#PASSWORD").parent().after("<div id='divpass' class='error-message'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
             chkflag = true;
         }
         else {
@@ -132,12 +132,12 @@ function ResetPassword() {
 
     if ($("#CONFIRMPASSWORD").val() == "") {
         $("#divcpass").remove();
-        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' style='color:red;margin-bottom: 20px;'>Please enter Confirm Password.</div>");
+        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' class='error-message'>Please enter Confirm Password.</div>");
         chkflag = true;
     }
     else if ($('#CONFIRMPASSWORD').val() != $('#PASSWORD').val()) {
         $("#divcpass").remove();
-        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' style='color:red;margin-bottom: 20px;'>Password Not Matched.</div>");
+        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' class='error-message'>Password Not Matched.</div>");
         chkflag = true;
     }
     else {
@@ -171,28 +171,52 @@ function ResetPassword() {
         data: data,
         success: function (response) {
             //debugger;
-            alert("Reset Password Successful.");
             if (response != null) {
-                //ClearResetPassword();
-                window.location.href = "/User/ResetPassword";
+                //debugger;
+                var arrayValues = Object.values(response);
+                if (arrayValues[0] == "fail") {
+                    alert(arrayValues[1]);
+                    window.location.href = "/User/ResetPassword";
+                    //swal("Error", "Email already exist.", "error"); 
+
+                }
+                else {
+                    //debugger;
+                    alert(arrayValues[1]);
+                    window.location.href = "/User/ResetPassword";
+                }
             } else {
-                alert("Reset Password Successful.");
+                //debugger;
+                alert("Error Occured. Please contact Administrator.");
                 window.location.href = "/User/ResetPassword";
                 //alert("Something went wrong");
-                //ClearResetPassword();
             }
-        },
-        failure: function (response) {
-            alert("Reset Password Successful.");
-            window.location.href = "/User/ResetPassword";
-            //alert(response.responseText);
-            //ClearResetPassword();
-        },
-        error: function (response) {
-            alert("Reset Password Successful.");
-            window.location.href = "/User/ResetPassword";
-            //alert(response.responseText);
-            //ClearResetPassword();
         }
+
+        //success: function (response) {
+        //    //debugger;
+        //    alert("Reset Password Successful.");
+        //    if (response != null) {
+        //        //ClearResetPassword();
+        //        window.location.href = "/User/ResetPassword";
+        //    } else {
+        //        alert("Reset Password Successful.");
+        //        window.location.href = "/User/ResetPassword";
+        //        //alert("Something went wrong");
+        //        //ClearResetPassword();
+        //    }
+        //},
+        //failure: function (response) {
+        //    alert("Reset Password Successful.");
+        //    window.location.href = "/User/ResetPassword";
+        //    //alert(response.responseText);
+        //    //ClearResetPassword();
+        //},
+        //error: function (response) {
+        //    alert("Reset Password Successful.");
+        //    window.location.href = "/User/ResetPassword";
+        //    //alert(response.responseText);
+        //    //ClearResetPassword();
+        //}
     });
 }

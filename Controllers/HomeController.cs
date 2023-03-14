@@ -1,18 +1,24 @@
-﻿using BevPort.Models;
+﻿using BevPort.Helpers;
+using BevPort.Models;
+using BevPort_Staging.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
-using System.Net.Mail;
-using System.Net;
+using System.Net.Http.Headers;
 
-namespace BevPort.Controllers
+namespace BevPort_Staging.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IConfiguration configuration;
+        private string clientBaseAddress = "";
+        public HomeController(ILogger<HomeController> logger, IConfiguration _configuration)
         {
             _logger = logger;
+            configuration = _configuration;
+            clientBaseAddress = configuration["clientBaseAddress"];
+
         }
 
         public IActionResult Index()
@@ -20,87 +26,60 @@ namespace BevPort.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult AboutUs()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Buyer()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
+        }
+        public IActionResult Seller()
+        {
+            return View();
+        }
+        public IActionResult MembershipPlan()
+        {
+            return View();
         }
 
         public IActionResult ContactUs()
         {
-
             return View();
         }
         [HttpPost]
-        public IActionResult ContactUs(ContactUs contact)
+        public async Task<IActionResult> ContactUs(ContactUs contact)
         {
-            //string Content = "Hello Mr " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you !! ";
-            string Content = "Hi " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you! \n  Have a great day!  \r\n Regards,  \n  BevPort Team ";
-            SendEmail(contact.EMAILID!, "BevPort Contact", Content);
-            ViewBag.ContactMessage = "Thank you for contacting us.";
-            return View();
-        }
+            ResponseModel objResp = new ResponseModel();
+            using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(clientBaseAddress);
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = new HttpResponseMessage();
+                    BaseURL objURL = new BaseURL();
+                    response = await client.PostAsJsonAsync(objURL.CreateContactUs, contact).ConfigureAwait(false);
 
-        [HttpPost]
-        public ActionResult SendEmail(string receiver, string subject, string message)
-        {
-            try
-            {
-                var senderEmail = new MailAddress("mcaashu214@gmail.com", "BevPort");
-               // var senderEmail = new MailAddress("hellobevport@gmail.com", "BevPort");
-                var receiverEmail = new MailAddress(receiver, "Receiver");
-                var password = "xelntkafoavtckfk";
-                // var password = "brerjdkbtphvxnjt";
-                var sub = subject;
-                var body = message;
-                var smtp = new SmtpClient
-                {
-                    EnableSsl = true,
-                    UseDefaultCredentials = false,
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(senderEmail.Address, password)
-                };
-                using (var mess = new MailMessage(senderEmail, receiverEmail)
-                {
-                    Subject = subject,
-                    Body = body
-                })
-                {
-                    smtp.Send(mess);
-                }
-                return View();
-
-            }
-            catch (Exception)
-            {
-                ViewBag.Error = "Some Error";
-            }
-            return View();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string result = response.Content.ReadAsStringAsync().Result;
+                        string Content = "Hi " + contact.FIRSTNAME + " " + contact.LASTNAME + "\n  Thankyou for Contacting us our Bevport Team will soon Contact you! \n  Have a great day!  \r\n Regards,  \n  BevPort Team ";
+                    var result1 = new EmailController().SendEmail(contact.EMAILID!, "BevPort Contact", Content);
+                    }
+                    else
+                    {                  
+                    objResp.ResponseCode = "fail";
+                    objResp.ResponseMessage = "Contact us fail.";
+                    return Json(objResp);
+                    }
+             }
+            objResp.ResponseCode = "success";
+            objResp.ResponseMessage = "Thank you for contacting us.";
+            return Json(objResp);
         }
-       
         
-        public IActionResult aboutus()
+        public IActionResult Error()
         {
-            return View();
-        }
-        public IActionResult buyer()
-        {
-            return View();
-        }
-        public IActionResult seller()
-        {
-            return View();
-        }
-        public IActionResult membershipplan()
-        {
-            return View();
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

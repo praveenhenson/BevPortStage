@@ -51,7 +51,7 @@ function ValidateFname() {
     var chkFnameflag = false;
     if ($("#FIRSTNAME").val() == "") {
         $("#divfirstname").remove();
-        $("#FIRSTNAME").parent().after("<div id='divfirstname' class='error-message'>Please enter First Name.</div>");
+        $("#FIRSTNAME").parent().after("<div id='divfirstname' class='error - message' style=''>Please enter First Name.</div>");
         chkFnameflag = true;
     }
     else {
@@ -67,7 +67,7 @@ function ValidateLname() {
     var chkLnameflag = false;
     if ($("#LASTNAME").val() == "") {
         $("#divlastname").remove();
-        $("#LASTNAME").parent().after("<div id='divlastname' class='error-message'>Please enter Last Name.</div>");
+        $("#LASTNAME").parent().after("<div id='divlastname' class='error - message' style=''>Please enter First Name.</div>");
         chkLnameflag = true;
     }
     else {
@@ -86,13 +86,13 @@ function ValidateEmail() {
 
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); // remove it
-        $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter Email.</div>");
+        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
         chkEmailflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
+            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
             chkEmailflag = true;
         }
         else {
@@ -111,13 +111,13 @@ function ValidatePassword() {
     var chkPassflag = false;
     if ($("#PASSWORD").val() == "") {
         $("#divpass").remove();
-        $("#PASSWORD").parent().after("<div id='divpass' class='error-message'>Please enter Password.</div>");
+        $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter Password.</div>");
         chkPassflag = true;
     }
     else {
         $("#divpass").remove();
         if (!($("#PASSWORD").val().match(validPassRegex))) {
-            $("#PASSWORD").parent().after("<div id='divpass' class='error-message'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
+            $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
             chkPassflag = true;
         }
         else {
@@ -134,7 +134,7 @@ function ValidateConfirmEmail() {
     var chkCEmailflag = false;
     if ($("#CONFIRMEMAIL").val() == "") {
         $("#divConfirmEmail").remove();
-        $("#CONFIRMEMAIL").parent().after("<div id='divConfirmEmail' class='error-message'>Please enter Confirm Email</div>");
+        $("#CONFIRMEMAIL").parent().after("<div id='divConfirmEmail' style='color:red;margin-bottom: 20px;'>Please enter Confirm Email</div>");
         chkCEmailflag = true;
     }
     else {
@@ -150,7 +150,7 @@ function ValidateConfirmPassword() {
     var chkCPwdflag = false;
     if ($("#CONFIRMPASSWORD").val() == "") {
         $("#divcpass").remove();
-        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' class='error-message'>Please enter Confirm Password.</div>");
+        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' style='color:red;margin-bottom: 20px;'>Please enter Confirm Password.</div>");
         chkCPwdflag = true;
     }
     else {
@@ -166,7 +166,7 @@ function ValidateUserType() {
     var chkUserTypeflag = false;
     if (document.getElementById("USERTYPE").selectedIndex == 0) {
         $("#divchoose").remove();
-        $("#USERTYPE").parent().after("<div id='divchoose' class='error-message'>Please enter Type.</div>");
+        $("#USERTYPE").parent().after("<div id='divchoose' style='color:red;margin-bottom: 20px;'>Please enter Type.</div>");
         chkUserTypeflag = true;
     }
     else {
@@ -182,7 +182,7 @@ function ValidateCheckTerm() {
     var chkChkflag = false;
     if (document.getElementById("CHKTERM").checked == false) {
         $("#divchk").remove();
-        $("#CHKTERM").parent().after("<div id='divchk' class='error-message'>Please select term and condition.</div>");
+        $("#CHKTERM").parent().after("<div id='divchk' style='color:red;margin-bottom: 20px;'>Please select term and condition.</div>");
         chkChkflag = true;
     }
 
@@ -212,7 +212,7 @@ function CreateUser() {
 
     if ($("#FIRSTNAME").val() == "") {
         $("#divfirstname").remove();
-        $("#FIRSTNAME").after("<div id='divfirstname' class='error-message'>Please enter First Name.</div>");
+        $("#FIRSTNAME").parent().after("<div id='divfirstname' class='error - message' style=''>Please enter First Name.</div>");
         chkflag = true;
     }
     else {
@@ -220,7 +220,7 @@ function CreateUser() {
     }
     if ($("#LASTNAME").val() == "") {
         $("#divlastname").remove();
-        $("#LASTNAME").after("<div id='divlastname' class='error-message'>Please enter Last Name.</div>");
+        $("#LASTNAME").parent().after("<div id='divlastname' class='error - message' style=''>Please enter First Name.</div>");
         chkflag = true;
     }
     else {
@@ -228,13 +228,13 @@ function CreateUser() {
     }
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); // remove it
-        $("#EMAILID").after("<div id='divemail' class='error-message'>Please enter Email.</div>");
+        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
         chkflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
+            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
             chkflag = true;
         }
         else {
@@ -243,7 +243,7 @@ function CreateUser() {
     }
     if ($("#CONFIRMEMAIL").val() == "") {
         $("#divConfirmEmail").remove();
-        $("#CONFIRMEMAIL").after("<div id='divConfirmEmail' class='error-message'>Please enter Confirm Email</div>");
+        $("#CONFIRMEMAIL").parent().after("<div id='divConfirmEmail' style='color:red;margin-bottom: 20px;'>Please enter Confirm Email</div>");
         chkflag = true;
     }
     else {
@@ -254,13 +254,13 @@ function CreateUser() {
 
     if ($("#PASSWORD").val() == "") {
         $("#divpass").remove();
-        $("#PASSWORD").after("<div id='divpass' class='error-message'>Please enter Password.</div>");
+        $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter Password.</div>");
         chkflag = true;
     }
     else {
         $("#divpass").remove();
         if (!($("#PASSWORD").val().match(validPassRegex))) {
-            $("#PASSWORD").after("<div id='divpass' class='error-message'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
+            $("#PASSWORD").parent().after("<div id='divpass' style='color:red;margin-bottom: 20px;'>Please enter valid Password. (Atleast 8 characters with 1 Uppercase, 1 Number and 1 Special)</div>");
             chkflag = true;
         }
         else {
@@ -269,7 +269,7 @@ function CreateUser() {
     }
     if ($("#CONFIRMPASSWORD").val() == "") {
         $("#divcpass").remove();
-        $("#CONFIRMPASSWORD").after("<div id='divcpass' class='error-message'>Please enter Confirm Password.</div>");
+        $("#CONFIRMPASSWORD").parent().after("<div id='divcpass' style='color:red;margin-bottom: 20px;'>Please enter Confirm Password.</div>");
         chkflag = true;
     }
     else {
@@ -277,7 +277,7 @@ function CreateUser() {
     }
     if (document.getElementById("USERTYPE").selectedIndex == 0) {
         $("#divchoose").remove();
-        $("#USERTYPE").after("<div id='divchoose' class='error-message'>Please enter Type.</div>");
+        $("#USERTYPE").parent().after("<div id='divchoose' style='color:red;margin-bottom: 20px;'>Please enter Type.</div>");
         chkflag = true;
     }
     else {
@@ -285,7 +285,7 @@ function CreateUser() {
     }
     if (document.getElementById("CHKTERM").checked == false) {
         $("#divchk").remove();
-        $("#CHKTERM").parent().after("<div id='divchk' class='error-message'>Please select term and condition.</div>");
+        $("#CHKTERM").parent().after("<div id='divchk' style='color:red;margin-bottom: 20px;'>Please select term and condition.</div>");
         chkflag = true;
     }
 
@@ -306,10 +306,11 @@ function CreateUser() {
         FIRSTNAME: FName,
         LASTNAME: LName,
         EMAILID: Email,
-        PASSWORD: Password,
+        PASSWORD:Password,
         USERTYPE: UserType,
     };
 
+   
     var Controller = "User";
     var Action = "Index";
     var URL = "/" + Controller + "/" + Action;
@@ -321,59 +322,30 @@ function CreateUser() {
         contentType: "application/x-www-form-urlencoded",
         data: data,
         success: function (response) {
-            //debugger;
-            if (response != null) { 
-               // debugger;
-                var arrayValues = Object.values(response);  
-                if (arrayValues[0] == "fail") {
-                    debugger;
-                    alert(arrayValues[1]);
-                    window.location.href = "/User/Index";
-                    swal("Success!", "Email Already Exists", "error");
-                    //swal("Error", "Email already exist.", "error");                          
-                }
-                else {
-                    window.location.href = "/User/Registration";
-                }          
+            debugger;
+            //alert("A1");
+            if (response != null) {
+                //ResetFields();
+                window.location.href = "/User/Registration";
             } else {
-                //debugger;
-                alert("Error Occured. Please contact Administrator.");
-                window.location.href = "/User/Index";
+                //alert("A2");
+                window.location.href = "/User/Registration";
                 //alert("Something went wrong");
+                //ResetFields();
             }
+        },
+        failure: function (response) {
+            // alert("B");
+            window.location.href = "/User/Registration";
+            //alert(response.responseText);
+            //ResetFields();
+        },
+        error: function (response) {
+            //alert("C");
+            window.location.href = "/User/Registration";
+            //alert(response.responseText);
+            ResetFields();
         }
-
-        //success: function (response) {
-        //    debugger;
-        //    if (response != null) {
-        //        alert("A1");
-        //        //ResetFields();
-        //        window.location.href = "/User/Registration";
-        //    } else {
-        //        debugger;
-        //        alert("A2");
-        //        window.location.href = "/User/Registration";
-        //        //alert("Something went wrong");
-        //        //ResetFields();
-        //    }
-        //},
-        //failure: function (response) {
-        //    debugger;
-        //    alert("B");
-        //    swal("Error", "Forget Password Failure.", "error");
-        //    window.location.href = "/User/Index";
-        //    //alert(response.responseText);
-        //    //ResetFields();
-
-        //},
-        //error: function (response) {
-        //    debugger;
-        //    alert(response);
-        //    swal("Error", "Forget Password Failure.", "error");
-        //    window.location.href = "/User/Index";
-        //    //alert(response.responseText);
-        //    ResetFields();
-        //}
     });
 
 

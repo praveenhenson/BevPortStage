@@ -15,50 +15,51 @@
                                 <h2 class="main-heading-content">Login</h2>
                                 <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
                                 @* <form id="FormID" action="" name="Form" method="post">*@
-                                <label style="color:red">@ViewBag.Message</label>
+
                                 @*<label style="color:red">@ViewBag.ErrorMessage</label>*@
-                                <form method="post" action="/User/Login">
+                                <label class="error-message">@ViewBag.Message</label>
+                                @* <form method="post" action="/User/Login">*@
 
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label asp-for="EMAILID">Email</label>
-                                                <span class="red-star">*</span>
-                                                <input for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID" oninput="ValidateEmail()" onchange="ValidateEmail()" required="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label asp-for="PASSWORD">Password</label>
-                                                <span class="red-star">*</span>
-                                                <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD" oninput="ValidatePassword()" onchange="ValidatePassword()" required="">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12" style="align-items:center">
-                                            <div class="form-btns" style="padding-left:150px">
-                                                <button type="submit" class="btn btn-default" />
-                                                Login</i>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label asp-for="EMAILID">Email</label>
+                                            <span class="red-star">*</span>
+                                            <input for="EMAILID" class="form-control" placeholder="" id="EMAILID" name="EMAILID" oninput="ValidateEmail()" onchange="ValidateEmail()" required="">
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div>
-                                            <a href="@Url.Action("Index","User")" style="padding-left:20px">Register</a>
-                                            <a href="@Url.Action("ForgetPassword","User")" style="padding-left:260px">Forgot Password ?</a>
-                                        </div>
 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label asp-for="PASSWORD">Password</label>
+                                            <span class="red-star">*</span>
+                                            <input asp-for="PASSWORD" type="password" class="form-control" placeholder="" id="PASSWORD" name="PASSWORD" oninput="ValidatePassword()" onchange="ValidatePassword()" required="">
+                                        </div>
                                     </div>
 
+                                </div>
 
-                                </form>
+                                <div class="row">
+                                    <div class="col-md-12" style="align-items:center">
+                                        <div class="form-btns" style="padding-left:150px">
+                                            <button type="submit" class="btn btn-default" id="btnSubmit" onclick="LoginUser()" />
+                                            Login</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <a href="@Url.Action("Index","User")" class="register">Register</a>
+                                        <a href="@Url.Action("ForgotPassword","User")" class="forgetpass">Forgot Password ?</a>
+                                    </div>
+
+                                </div>
+
+
+                                @*</form>*@
 
                                 @*
 
@@ -135,13 +136,5 @@
         </div>
     </div>
 </section>
+<script src="~/js/pages/user.js"></script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-<script>
-    function Hello() {
-
-        swal("Success!", "Successfully Deleted Data!", "success");
-    }
-</script>

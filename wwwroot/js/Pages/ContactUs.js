@@ -3,7 +3,7 @@
     var chkFnameflag = false;
     if ($("#FIRSTNAME").val() == "") {
         $("#divfirstname").remove();
-        $("#FIRSTNAME").parent().after("<div id='divfirstname' style='color:red;margin-bottom: 20px;'>Please enter First Name.</div>");
+        $("#FIRSTNAME").after("<div id='divfirstname' class='error-message'>Please enter First Name.</div>");
         chkFnameflag = true;
     }
     else {
@@ -20,7 +20,7 @@ function ValidateLName() {
     var chkLnameflag = false;
     if ($("#LASTNAME").val() == "") {
         $("#divlastname").remove();
-        $("#LASTNAME").parent().after("<div id='divlastname' style='color:red;margin-bottom: 20px;'>Please enter Last Name.</div>");
+        $("#LASTNAME").after("<div id='divlastname' class='error-message'>Please enter Last Name.</div>");
         chkLnameflag = true;
     }
     else {
@@ -36,7 +36,7 @@ function ValidateContent() {
     var chkVCflag = false;
     if ($("#Content").val() == "") {
         $("#divContent").remove();
-        $("#Content").parent().after("<div id='divContent' style='color:red;margin-bottom: 20px;'>Please enter Content.</div>");
+        $("#Content").after("<div id='divContent' class='error-message'>Please enter Content.</div>");
         chkflag = true;
     }
     else {
@@ -54,13 +54,13 @@ function ValidateEmail() {
     var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); // remove it
-        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
+        $("#EMAILID").after("<div id='divemail' class='error-message'>Please enter Email.</div>");
         chkEmailflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
+            $("#EMAILID").after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
             chkEmailflag = true;
         }
         else {
@@ -73,7 +73,7 @@ function ValidateEmail() {
     }
 }
 
-function SaveContactUs() { //new
+function SaveContactUs() {
     var FName, LName, Email, Content;
     //var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -84,7 +84,7 @@ function SaveContactUs() { //new
     $("#divContent").remove();
     if ($("#FIRSTNAME").val() == "") {
         $("#divfirstname").remove();
-        $("#FIRSTNAME").parent().after("<div id='divfirstname' style='color:red;margin-bottom: 20px;'>Please enter First Name.</div>");
+        $("#FIRSTNAME").after("<div id='divfirstname' class='error-message'>Please enter First Name.</div>");
         chkflag = true;
     }
     else {
@@ -92,7 +92,7 @@ function SaveContactUs() { //new
     }
     if ($("#LASTNAME").val() == "") {
         $("#divlastname").remove();
-        $("#LASTNAME").parent().after("<div id='divlastname' style='color:red;margin-bottom: 20px;'>Please enter Last Name.</div>");
+        $("#LASTNAME").after("<div id='divlastname' class='error-message'>Please enter Last Name.</div>");
         chkflag = true;
     }
     else {
@@ -100,13 +100,13 @@ function SaveContactUs() { //new
     }
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove();
-        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
+        $("#EMAILID").after("<div id='divemail' class='error-message'>Please enter Email.</div>");
         chkflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
+            $("#EMAILID").after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
             chkflag = true;
         }
         else {
@@ -115,7 +115,7 @@ function SaveContactUs() { //new
     }
     if ($("#Content").val() == "") {
         $("#divContent").remove();
-        $("#Content").parent().after("<div id='divContent' style='color:red;margin-bottom: 20px;'>Please enter Content.</div>");
+        $("#Content").after("<div id='divContent' class='error-message'>Please enter Content.</div>");
         chkflag = true;
     }
     else {
@@ -138,10 +138,8 @@ function SaveContactUs() { //new
     var Controller = "Home";
     var Action = "ContactUs";
     var URL = "/" + Controller + "/" + Action;
-    debugger;
-    //ResetFields();
+    $('#cover-spin').show(0);
     $.ajax({
-
         type: "POST",
         url: URL,
         dataType: 'json',
@@ -150,27 +148,38 @@ function SaveContactUs() { //new
         success: function (response) {
             debugger;
             if (response != null) {
-                ResetFields();
+                debugger;
+                var arrayValues = Object.values(response);
+                if (arrayValues[0] == "fail") {
+                    swal("Error", arrayValues[1], "error");
+                    $('#cover-spin').hide();
+                    ResetFields();
+                }
+                else {
+                    swal("Success!", arrayValues[1], "success");     
+                    $('#cover-spin').hide();
+
+                }
             } else {
-                //alert("Something went wrong");
-                ResetFields();
+                swal("Error", 'Some Error', "error");
+                $('#cover-spin').hide();
+
+
             }
-        },
-        failure: function (response) {
-            //alert(response.responseText);
-            ResetFields();
-        },
-        error: function (response) {
-            //alert(response.responseText);
-            ResetFields();
         }
     });
+
+
 }
 
 function ResetFields() {
-    debugger;
+    //debugger;
     $("#FIRSTNAME").val('');
     $('#LASTNAME').val('');
     $('#EMAILID').val('');
     $('#Content').val('');
+    $("#divfirstname").remove();
+    $("#divlastname").remove()
+    $("#divemail").remove();
+    $("#divContent").remove();
 }

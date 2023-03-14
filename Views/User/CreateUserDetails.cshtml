@@ -1,0 +1,262 @@
+﻿@model BevPort.Models.UserDetails
+@{
+    ViewData["Title"] = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
+<div class="site-wrapper">
+    <div class="main-wrapper">
+        <!--Header Top Menu-->
+        <div class="main-naivgation">
+        </div>
+        <!--End Header Top Menu-->
+        <!--Registration Form-->
+        <section class="registration-page">
+            <div class="container">
+                <label for="Message" class="error-message">@ViewBag.Messages</label>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="image-holder">
+                                        <img src="~/images/registration-form-6.jpg" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="reg-forms">
+                                        <h2 class="main-heading-content">Business Information</h2>
+                                        <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="BUSINESSNAME">Business Name</label>
+                                                    <span class="red-star">*</span>
+                                                    <input asp-for="BUSINESSNAME" type="text" class="form-control" placeholder="Business Name" id="BUSINESSNAME" name="BUSINESSNAME" oninput="RemoveMessageBName()" onchange="RemoveMessageBName()" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="EIN">Employer Identification Number</label>
+                                                    <span class="red-star">*</span>
+                                                    <input asp-for="EIN" type="text" class="ein form-control" placeholder="EIN" id="EIN" oninput="ValidateEIN()" onchange="ValidateEIN()" name="EIN" required="">
+                                                    <div id="validein"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="STATETAXNO">State Tax Number</label>
+                                                    <input for="STATETAXNO" type="text" class="form-control" placeholder="If Different From EIN" id="STATETAXNO" oninput="RemoveMessagetaxnno()" onchange="RemoveMessagetaxnno()" name="STATETAXNO">
+                                                </div>
+                                            </div>
+                                             <div class="col-md-6">
+                                               <div class="form-group">
+                                                    <label for="Country">Country</label>
+                                                    <span class="red-star">*</span>
+                                                    <select name="Country" class="form-control" id="Country" onchange="ValidateCountry()">
+                                                        <option value="" disabled="" selected=true>Choose Country</option>
+                                                        <option value="1">USA</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+  <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="State">State</label>
+                                                    <span class="red-star">*</span>
+                                                    <select name="State" class="form-control" id="State" onchange="ValidateState()">
+                                                        <option value="" disabled="" selected=true>Choose State</option>
+                                                        <option value="1">Texas</option>
+                                                        <option value="2">California</option>
+                                                        <option value="3">Florida</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="City">City </label>
+                                                    <span class="red-star">*</span>
+                                                    <input for="City" id="CITY" type="text" class="form-control" placeholder="City" oninput="RemoveMessageCity()" onchange="RemoveMessageCity()" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="STREETADD">Street Address</label>
+                                                    <span class="red-star">*</span>
+                                                    <input asp-for="STREETADD" type="text" class="form-control" placeholder="Street Address" id="STREETADD" oninput="RemoveMessageSt()" onchange="RemoveMessageSt()" name="STREETADD" required="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="ZipCode">ZipCode</label>
+                                                    <span class="red-star">*</span>
+                                                    <input for="ZipCode" type="text" maxlength="5" class="zip form-control" placeholder="ZipCode" id="ZipCode" oninput="RemoveMessageZip()" onchange="RemoveMessageZip()" name="ZipCode" onkeyup="ValidateZip()" required="">
+                                                    <div id="validzip"></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="BUSINESSPHONE">Mobile Number</label>
+                                                    <span class="red-star">*</span>
+                                                    <input asp-for="BUSINESSPHONE" type="text" class="phone form-control" placeholder="Business Number 91XXXXXXXX" id="BUSINESSPHONE" oninput="RemoveMessageBphone()" onchange="ValidateMobile()" name="BUSINESSPHONE" onkeyup="ValidateMobile()" required="">
+                                                    <div id="validmobile"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="OPTIONALPHONE">Optional Number</label>
+                                                    <input asp-for="OPTIONALPHONE" type="text" class="optionalphone form-control" placeholder="Optional Mobile Number 91XXXXXXXX" id="OPTIONALPHONE" oninput="RemoveMessageOphone()" onchange="ValidatePhone()" onkeyup="ValidatePhone()" name="OPTIONALPHONE">
+                                                    <div id="validoptionalmobile"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if (ViewBag.UserType == 2)
+                                        {
+                                            <input for="" type="tel" class=" form-control cc-number" placeholder="" value=@ViewBag.UserType  id="usertypeval" name="usertypeval" style="display:none">
+
+                                        <div hidden>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label asp-for="MEMBERSHIPPLAN">Membership Plan</label>
+                                                    <span class="red-star">*</span>
+                                                    <select name="MEMBERSHIPPLAN" id="MEMBERSHIPPLAN" class="form-control" required="" name="MEMBERSHIPPLAN" onchange="ValidateMemberShipPlan()">
+                                                        <option value="" disabled="" selected=true>Choose Your Plan</option>
+                                                        <option value="1">Monthly $29.99</option>
+                                                        <option value="2">Yearly  $329.89</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+  <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="cc-number">Credit/Debit Card Number</label>
+                                                    <span class="red-star">*</span>
+                                                    <input for="" type="tel" class=" form-control cc-number" placeholder="1234 1234 1234 1234 " maxlength="16" id="cc-number" autocomplete="cc-number" name="cc-number" required="" oninput="RemoveMessageCCnumber()" onchange="RemoveMessageCCnumber()">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="cc-cvc">CVV/CVC</label>
+                                                    <span class="red-star">*</span>
+                                                    <input for="" type="tel" class="form-control cc-cvc" maxlength="4" autocomplete="off" placeholder="CVV" id="cc-cvc" name="" required="" oninput="RemoveMessageCCcvc()" onchange="RemoveMessageCCcvc()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="cc-exp">Expiry Date</label>
+                                                    <span class="red-star">*</span>
+                                                    <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MMYY" id="ExpiryDate" name="ExpiryDate" required="" oninput="RemoveMessageExpDt()" onchange="RemoveMessageExpDt()">
+                                                    <div id="validexpdate"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="AccountHolder">Account Holder's Name</label>
+                                                    <span class="red-star">*</span>
+                                                    <input for="" type="text" class="form-control" placeholder="Account Holder's Name" id="AccountHolder" name="AccountHolder" required="" oninput="RemoveMessageHoldernm()" onchange="RemoveMessageHoldernm()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label asp-for="MEMBERSHIPPLAN">Membership Plan</label>
+                                                            <span class="red-star">*</span>
+                                                            <select name="MEMBERSHIPPLAN" id="MEMBERSHIPPLAN" class="form-control" required="" name="MEMBERSHIPPLAN" onchange="ValidateMemberShipPlan()">
+                                                                <option value="" disabled="" selected=true>Choose Your Plan</option>
+                                                                <option value="1">Monthly $29.99</option>
+                                                                <option value="2">Yearly  $329.89</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="cc-number">Credit/Debit Card Number</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="" type="tel" class=" form-control cc-number" placeholder="1234 1234 1234 1234 " maxlength="16" id="cc-number" autocomplete="cc-number" name="cc-number" required="" oninput="RemoveMessageCCnumber()" onchange="RemoveMessageCCnumber()">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="cc-cvc">CVV/CVC</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="" type="tel" class="form-control cc-cvc" maxlength="4" autocomplete="off" placeholder="CVV" id="cc-cvc" name="" required="" oninput="RemoveMessageCCcvc()" onchange="RemoveMessageCCcvc()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="cc-exp">Expiry Date</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="" type="tel" maxlength="4" class="expDate form-control cc-exp" placeholder="MMYY" id="ExpiryDate" name="ExpiryDate" required="" oninput="RemoveMessageExpDt()" onchange="RemoveMessageExpDt()">
+                                                            <div id="validexpdate"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="AccountHolder">Account Holder's Name</label>
+                                                            <span class="red-star">*</span>
+                                                            <input for="" type="text" class="form-control" placeholder="Account Holder's Name" id="AccountHolder" name="AccountHolder" required="" oninput="RemoveMessageHoldernm()" onchange="RemoveMessageHoldernm()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        }
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="checkbox">
+                                                    <label><input id="chkAgreeId" type="checkbox" required="" onclick="ValidateCheckTerm()"> I agree with the <a href="#">terms and conditions</a> and the <a href="#">privacy policy</a>.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-btns">
+                                                    <button class="btn btn-default" id="btnGet" onclick="finalregistaton()" />
+                                                    Submit</i>
+                                                    <button type="reset" class="btn btn-default resetbtn" onclick="ResetSecondRegistration()">Reset</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @* </button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Registration Form-->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="~/js/pages/userdetails.js"></script>
+

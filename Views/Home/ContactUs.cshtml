@@ -1,195 +1,101 @@
 ﻿@model BevPort.Models.Users
 @{
     ViewData["Title"] = "ContactUs";
-    Layout = "~/Views/Default/DefaultLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }   <!--End Header Top Menu-->
-    <div class="site-wrapper">
-        <div class="main-wrapper">
-            <!--Header Top Menu-->
-            <div class="main-naivgation">
+<div class="site-wrapper">
+    <div class="main-wrapper">
+        <!--Header Top Menu-->
+        <div class="main-naivgation">
 
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                @*</nav>*@
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            @*</nav>*@
+        </div>
+        <!--End Header Top Menu-->
+        <section class="inner-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="banner-main-heading">
+                            <h1>Contact Us</h1>
+                            <p>Drop us a line. We’ll see you at happy hour.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--End Header Top Menu-->
-            <section class="inner-page">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="banner-main-heading">
-                                <h1>Contact Us</h1>
-                                <p>Drop us a line. We’ll see you at happy hour.</p>
-                            </div>
+        </section>
+        <section class="main-content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-information">
+                            <h5 class="sub-heading">Get in touch</h5>
+                            <h2 class="inner-main-heading-content">Contact Us</h2>
+                            <p>Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
+                            <h3>Phone:</h3>
+                            <p>800 XXXX XXX</p>
+                            <h3>Email:</h3>
+                            <p>email@example.com</p>
+                            <h3>Address:</h3>
+                            <p>27 Division St, New York, NY 10002, United States</p>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="main-content-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-information">
-                                <h5 class="sub-heading">Get in touch</h5>
-                                <h2 class="inner-main-heading-content">Contact Us</h2>
-                                <p>Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
-                                <h3>Phone:</h3>
-                                <p>800 XXXX XXX</p>
-                                <h3>Email:</h3>
-                                <p>email@example.com</p>
-                                <h3>Address:</h3>
-                                <p>27 Division St, New York, NY 10002, United States</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="contact-form-area">
-                                <h2 class="inner-main-heading-content">Drop Us a Line</h2>
-                                <p class="content-para">Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
-                                @Html.ValidationSummary(true)
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="FIRSTNAME">First Name <span class="red-tick">*</span></label>
-                                                <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME" oninput="ValidateFName()" onkeypress="ValidateFName()">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="LASTNAME">Last Name <span class="red-tick">*</span></label>
-                                                <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" name="LASTNAME" oninput="ValidateLName()" onkeypress="ValidateLName()">
-                                            </div>
-                                        </div>
+                    <div class="col-md-6">
+                        <div class="contact-form-area">
+                            <h2 class="inner-main-heading-content">Drop Us a Line</h2>
+                            <p class="content-para">Please drop in your details and a short message of what you are looking for and we will contact you to take it further.</p>
+                            @Html.ValidationSummary(true)
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="FIRSTNAME">First Name <span class="red-tick">*</span></label>
+                                        <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" name="FIRSTNAME" oninput="ValidateFName()" onkeypress="ValidateFName()">
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label asp-for="EMAILID">Email <span class="red-tick">*</span></label>
-                                                <input asp-for="EMAILID" type="text" class="form-control" name="EMAILID" placeholder="" oninput="ValidateEmail()" onkeypress="ValidateEmail()">
-                                            </div>
-
-
-
-                                        </div>
-                                        @*
-                                        <div class="col-md-6">
-                                        <div class="form-group">
-                                        <label for="email">Primary Business</label>
-                                        <span class="red-tick">*</span>
-                                        <select name="" id="" class="form-control" required="">
-                                        <option value="" disabled="" selected=true>Choose Option</option>
-                                        <option value="1">Buyer</option>
-                                        <option value="2">Seller</option>
-                                        <option value="3">Sales/Marketing Partner</option>
-                                        <option value="4">Importer</option>
-                                        <option value="5">Partner</option>
-                                        <option value="6">Media</option>
-                                        <option value="7">Competitor</option>
-                                        <option value="8">RNDC/YMCO</option>
-                                        <option value="9">Industry Contact</option>
-                                        <option value="10">Other</option>
-                                        </select>
-                                        </div>
-                                        </div>
-                                        *@
-
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LASTNAME">Last Name <span class="red-tick">*</span></label>
+                                        <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" name="LASTNAME" oninput="ValidateLName()" onkeypress="ValidateLName()">
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="email">What can we do for you?</label>
-                                                <span class="red-tick">*</span>
-                                                <textarea for="Content" id="Content" name="Content" rows="3" class="form-control" oninput="ValidateContent()" onkeypress="ValidateContent()" required=""></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-btns">
-                                                <button id="ContactUs" name="save" class="btn btn-default" onclick="SaveContactUs();">Submit</button>
-                                                <br />
-                                                <label for="Message" style="color:green;padding-top:7px;">@ViewBag.ContactMessage</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-
-            <section class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Quick Links</h2>
-                            <ul>
-
-
-                                <li><a href="@Url.Action("index","Home")">Home</a></li>
-                                <li><a href="@Url.Action("aboutus","Home")">About Us</a></li>
-                                <li><a href="#">Services</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Trending</h2>
-                            <ul>
-                                <li><a href="@Url.Action("seller","Home")">Sellers</a></li>
-                                <li><a href="@Url.Action("buyer","Home")">Buyers</a></li>
-                                <li><a href="@Url.Action("membershipplan","Home")">Membership</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Quick Links</h2>
-                            <ul>
-                                <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
-                                <li><a href="#">Career</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <h2 class="footer-heading">Quick Links</h2>
-                            <p><a href="#">800 XXXX XXX</a></p>
-                            <p><a href="#">support@bevport.com</a></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="newsletter">
-                                <h2 class="elementor-heading-title">BevPort Newsletter</h2>
-                                <p>Be the first to know about our new arrivals and exclusive offers.</p>
-                                <div class="newsletter-form">
-                                    <form name="sds">
-                                        <div class="mc4wp-form-fields">
-                                            <div class="mc_merge_var">
-                                                <input type="email" name="EMAIL" placeholder="Email Address" required="">
-                                            </div>
-                                            <div class="mc_signup_submit">
-                                                <input type="submit" value="Sign up">
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="ftr-copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyrights &copy; 2023 All Rights Reserved by BevPort.</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="EMAILID">Email <span class="red-tick">*</span></label>
+                                        <input asp-for="EMAILID" type="text" class="form-control" name="EMAILID" placeholder="" oninput="ValidateEmail()" onkeypress="ValidateEmail()">
+                                    </div>
+
+
+
+                                </div>
+                                                          </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="email">What can we do for you?</label>
+                                        <span class="red-tick">*</span>
+                                        <textarea for="Content" id="Content" name="Content" rows="3" class="form-control" oninput="ValidateContent()" onkeypress="ValidateContent()" required=""></textarea>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-btns">
+                                        <button id="ContactUs" name="save" class="btn btn-default" onclick="SaveContactUs();">Submit</button>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+           
     </div>
-
-
+</div>
 <script src="~/js/pages/contactus.js"></script>

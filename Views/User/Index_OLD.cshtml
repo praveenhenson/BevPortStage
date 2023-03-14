@@ -22,18 +22,17 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                    <label for="Message" class="error-message">@ViewBag.Message</label>
+                                                            <label for="Message" style="color:red;padding-top:7px;">@ViewBag.Message</label>
                                         <div class="reg-forms">
                                             <h2 class="main-heading-content">Sign Up</h2>
                                             <p class="content-para">Numbers don’t lie. We empower every aspect of your distribution so you can make a material impact on your bottom line.</p>
-                                        @*<form id="FormID" action="" name="Form" method="post" onsubmit="event.preventDefault();">*@
+                                            @* <form id="FormID" action="" name="Form" method="post">*@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label asp-for="FIRSTNAME">First Name</label>
                                                             <span class="red-star">*</span>
                                                             <input asp-for="FIRSTNAME" type="text" class="form-control" placeholder="" id="FIRSTNAME" name="FIRSTNAME" oninput="ValidateFname()" onchange="ValidateFname()" required="">
-
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -43,6 +42,7 @@
                                                             <input asp-for="LASTNAME" type="text" class="form-control" placeholder="" id="LASTNAME" name="LASTNAME" oninput="ValidateLname()" onchange="ValidateLname()" required="">
                                                         </div>
                                                     </div>
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -121,7 +121,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               @*</form>*@
+                                              
                                         </div>
 
 

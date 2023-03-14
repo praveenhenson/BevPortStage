@@ -6,13 +6,13 @@
 
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); // remove it
-        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
+        $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter Email.</div>");
         chkEmailflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
+            $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
             chkEmailflag = true;
         }
         else {
@@ -57,7 +57,7 @@ function SaveStudent() {
     //};
 
 function ForgetPassword() {
-    debugger;
+    //debugger;
     var validRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
     var chkflag = false;
@@ -67,13 +67,13 @@ function ForgetPassword() {
 
     if ($("#EMAILID").val() == "") {
         $("#divemail").remove(); // remove it
-        $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter Email.</div>");
+        $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter Email.</div>");
         chkflag = true;
     }
     else {
         $("#divemail").remove();
         if (!($("#EMAILID").val().match(validRegex))) {
-            $("#EMAILID").parent().after("<div id='divemail' style='color:red;margin-bottom: 20px;'>Please enter valid Email.</div>");
+            $("#EMAILID").parent().after("<div id='divemail' class='error-message'>Please enter valid Email.</div>");
             chkflag = true;
         }
         else {
@@ -91,48 +91,69 @@ function ForgetPassword() {
 
     //debugger;
     var Controller = "User";
-    var Action = "ForgetPassword";
+    var Action = "ForgotPassword";
     var URL = "/" + Controller + "/" + Action;
-    //ResetFields();
+    $('#cover-spin').show(0);
     $.ajax({
         type: "POST",
         url: URL,
         contentType: "application/x-www-form-urlencoded",
         data: data,
         success: function (response) {
-            //debugger;
-            alert("Forget Password Successful.");
-            if (response != null) {
-                //ClearForgetPassword();
-                window.location.href = "/User/ForgetPassword";
+            if (response != null) { 
+                var arrayValues = Object.values(response);
+                if (arrayValues[0] == "fail") {
+                    $('#cover-spin').hide();
+                    swal("Error", arrayValues[1], "error"); 
+                   
+                }
+                else {
+                    $('#cover-spin').hide();
+                    swal("Success", arrayValues[1], "success");  
+                }
             } else {
-                alert("Forget Password Successful.");
-                window.location.href = "/User/ForgetPassword";
-                //alert("Something went wrong");
-                //ClearForgetPassword();
+                swal("Error", "Error Occured. Please contact Administrator.", "error");
+                $('#cover-spin').hide();
             }
-        },
-        failure: function (response) {
-            alert("Forget Password Failure.");
-            window.location.href = "/User/ForgetPassword";
-            //alert(response.responseText);
-            //ClearForgetPassword();
-        },
-        error: function (response) {
-            debugger;
-            alert("Forget Password Error.");
-            window.location.href = "/User/ForgetPassword";
-            //alert(response.responseText);
-            //ClearForgetPassword();
         }
+
+        //success: function (response) {
+        //    //debugger;
+        //    //alert("Forget Password Successful.");
+        //    swal("Success", "Forget Password Successful.", "");
+        //    if (response != null) {
+        //        //ClearForgetPassword();
+        //        window.location.href = "/User/ForgetPassword";
+        //    } else {
+        //        //alert("Forget Password Successful.");
+        //        swal("Success", "Forget Password Successful.", "");
+        //        window.location.href = "/User/ForgetPassword";
+        //        //alert("Something went wrong");
+        //        //ClearForgetPassword();
+        //    }
+        //},
+        //failure: function (response) {
+        //   // alert("Forget Password Failure.");
+        //    swal("Error", "Forget Password Failure.", "error");
+        //    window.location.href = "/User/ForgetPassword";
+        //    //alert(response.responseText);
+        //    //ClearForgetPassword();
+        //},
+        //error: function (response) {
+        //    debugger;
+        //    //alert("Forget Password Error.");
+        //    swal("Error", "Forget Password Failure.", "error");
+        //    window.location.href = "/User/ForgetPassword";
+        //    //alert(response.responseText);
+        //    //ClearForgetPassword();
+        //}
     });
 
 
 }
 
 function ClearForgetPassword() {
-   // debugger;
-    document.getElementById("btnSubmit").disabled = false;
+   debugger;
     $('#EMAILID').val('');
     $("#divemail").remove();
     document.getElementById("lblMessage").value = "";

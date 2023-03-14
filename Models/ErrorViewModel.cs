@@ -1,4 +1,4 @@
-namespace BevPort.Models
+namespace BevPort_Staging.Models
 {
     public class ErrorViewModel
     {
